@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -300.0
 const DASH_SPEED = 400.0
 const DASH_DURATION = 0.2
 const DASH_COOLDOWN = 0.5
+const MAX_JUMPS = 2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -13,6 +14,7 @@ var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 var dash_direction_x = 1  # Direction for dash: -1 (left) or 1 (right)
+var jumps_remaining = MAX_JUMPS
 
 
 func _physics_process(delta: float) -> void:
@@ -34,8 +36,13 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_dashing:
+	if Input.is_action_just_pressed("jump") and jumps_remaining > 0 and not is_dashing:
 		velocity.y = JUMP_VELOCITY
+		jumps_remaining -= 1
+	
+	# Reset jumps when on floor
+	if is_on_floor():
+		jumps_remaining = MAX_JUMPS
 	
 	# Handle dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
