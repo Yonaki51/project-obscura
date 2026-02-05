@@ -12,7 +12,7 @@ const DASH_COOLDOWN = 0.5
 var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
-var dash_direction = 0.0
+var dash_direction_x = 0
 
 
 func _physics_process(delta: float) -> void:
@@ -39,9 +39,9 @@ func _physics_process(delta: float) -> void:
 		# Dash in the direction the character is facing if no input, otherwise dash in input direction
 		if direction == 0:
 			# Use the sprite flip to determine direction
-			dash_direction = -1.0 if animated_sprite.flip_h else 1.0
+			dash_direction_x = -1 if animated_sprite.flip_h else 1
 		else:
-			dash_direction = direction
+			dash_direction_x = 1 if direction > 0 else -1
 		
 		is_dashing = true
 		dash_timer = DASH_DURATION
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Apply movement
 	if is_dashing:
-		velocity.x = dash_direction * DASH_SPEED
+		velocity.x = dash_direction_x * DASH_SPEED
 	elif direction:
 		velocity.x = direction * SPEED
 	else:
