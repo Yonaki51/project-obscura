@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -300.0
 const DASH_SPEED = 400.0
 const DASH_DURATION = 0.2
 const DASH_COOLDOWN = 0.5
-const MAX_JUMPS = 2
+const MAX_JUMPS = 1
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
