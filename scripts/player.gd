@@ -16,11 +16,15 @@ var dash_direction_x = 0
 
 
 func _physics_process(delta: float) -> void:
+	# Get the input direction at the start
+	var direction := Input.get_axis("move_left", "move_right")
+	
 	# Update timers
 	if dash_timer > 0:
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
+			dash_cooldown_timer = DASH_COOLDOWN
 	
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
@@ -35,7 +39,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
-		var direction := Input.get_axis("move_left", "move_right")
 		# Dash in the direction the character is facing if no input, otherwise dash in input direction
 		if direction == 0:
 			# Use the sprite flip to determine direction
@@ -45,10 +48,6 @@ func _physics_process(delta: float) -> void:
 		
 		is_dashing = true
 		dash_timer = DASH_DURATION
-		dash_cooldown_timer = DASH_COOLDOWN
-
-	# Get the input direction: -1, 0, 1
-	var direction := Input.get_axis("move_left", "move_right")
 	
 	# Flip the sprite (only when not dashing to maintain dash direction)
 	if not is_dashing:
