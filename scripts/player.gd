@@ -12,7 +12,7 @@ const DASH_COOLDOWN = 0.5
 var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
-var dash_direction_x = 0
+var dash_direction_x = 1  # Direction for dash: -1 (left) or 1 (right)
 
 
 func _physics_process(delta: float) -> void:
