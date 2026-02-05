@@ -1,2 +1,2 @@
 # project-obscura
-een puzzelspel gemaakt in godot 4
+een platformspel gemaakt in godot 4
