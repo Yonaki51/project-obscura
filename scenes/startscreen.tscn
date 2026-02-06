@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://2ecbpaeuwxrw"]
 
 [ext_resource type="Texture2D" uid="uid://bc0dbvhwil6du" path="res://assets/sprites/designed sprites/game_startscherm_knoppen.png" id="1_o6o42"]
+[ext_resource type="Script" uid="uid://ba1k08a55hp4t" path="res://scripts/startscreen.gd" id="1_q30ww"]
+[ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="2_7nbyq"]
 [ext_resource type="Texture2D" uid="uid://d1fanvm85jh3y" path="res://assets/sprites/designed sprites/game_startscherm_knoppen_ingedrukt.png" id="2_q30ww"]
-[ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/start_button.gd" id="3_7nbyq"]
+[ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/button.gd" id="3_7nbyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g0no"]
+atlas = ExtResource("2_7nbyq")
+region = Rect2(89.410034, 8.025009, 1510.9874, 1020.9375)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ge0g"]
 atlas = ExtResource("1_o6o42")
@@ -10,19 +16,64 @@ region = Rect2(1.8544321, 1.9699678, 42.233562, 15.090772)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1ylw"]
 atlas = ExtResource("2_q30ww")
-region = Rect2(2.0150757, 2.9547157, 41.976036, 14.060686)
+region = Rect2(1.9854126, 3.056672, 42.245907, 14.168345)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nbyq"]
+atlas = ExtResource("1_o6o42")
+region = Rect2(3.0476894, 25.089642, 32.080765, 15.190563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ta5r"]
+atlas = ExtResource("2_q30ww")
+region = Rect2(2.9414625, 25.939463, 32.505672, 14.23451)
 
 [node name="startscreen" type="Node2D" unique_id=606923707]
+script = ExtResource("1_q30ww")
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=1726501749]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=14951637]
+modulate = Color(0.735357, 0.735357, 0.735357, 0.98100007)
+offset_left = -330.0
+offset_top = -3.0
+offset_right = 1470.0
+offset_bottom = 1077.0
+texture = SubResource("AtlasTexture_6g0no")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="." unique_id=625724087]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start_Button" type="TextureButton" parent="Control" unique_id=1726501749]
 editor_description = "I'm the start button"
-offset_right = 42.0
-offset_bottom = 15.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 288.0
+offset_top = 177.0
+offset_right = 708.0
+offset_bottom = 327.0
+grow_horizontal = 2
 tooltip_text = "
 "
 texture_normal = SubResource("AtlasTexture_4ge0g")
 texture_pressed = SubResource("AtlasTexture_g1ylw")
+stretch_mode = 5
 script = ExtResource("3_7nbyq")
 
-[connection signal="mouse_entered" from="TextureButton" to="TextureButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="TextureButton" to="TextureButton" method="_on_mouse_exited"]
+[node name="Exit_Button" type="TextureButton" parent="Control" unique_id=2076623626]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 473.0
+offset_right = 729.0
+offset_bottom = 623.0
+texture_normal = SubResource("AtlasTexture_7nbyq")
+texture_pressed = SubResource("AtlasTexture_6ta5r")
+stretch_mode = 5
+script = ExtResource("3_7nbyq")
+
+[connection signal="mouse_entered" from="Control/Start_Button" to="Control/Start_Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Start_Button" to="Control/Start_Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/Exit_Button" to="." method="_on_exit_button_pressed"]
