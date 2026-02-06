@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://2ecbpaeuwxrw"]
+
+[ext_resource type="Texture2D" uid="uid://bc0dbvhwil6du" path="res://assets/sprites/designed sprites/game_startscherm_knoppen.png" id="1_o6o42"]
+[ext_resource type="Texture2D" uid="uid://d1fanvm85jh3y" path="res://assets/sprites/designed sprites/game_startscherm_knoppen_ingedrukt.png" id="2_q30ww"]
+[ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/start_button.gd" id="3_7nbyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ge0g"]
+atlas = ExtResource("1_o6o42")
+region = Rect2(1.8544321, 1.9699678, 42.233562, 15.090772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1ylw"]
+atlas = ExtResource("2_q30ww")
+region = Rect2(2.0150757, 2.9547157, 41.976036, 14.060686)
+
+[node name="startscreen" type="Node2D" unique_id=606923707]
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1726501749]
+editor_description = "I'm the start button"
+offset_right = 42.0
+offset_bottom = 15.0
+tooltip_text = "
+"
+texture_normal = SubResource("AtlasTexture_4ge0g")
+texture_pressed = SubResource("AtlasTexture_g1ylw")
+script = ExtResource("3_7nbyq")
+
+[connection signal="mouse_entered" from="TextureButton" to="TextureButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="TextureButton" method="_on_mouse_exited"]
