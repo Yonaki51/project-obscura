@@ -31,10 +31,10 @@ script = ExtResource("1_q30ww")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=14951637]
 modulate = Color(0.735357, 0.735357, 0.735357, 0.98100007)
-offset_left = -330.0
-offset_top = -3.0
-offset_right = 1470.0
-offset_bottom = 1077.0
+offset_left = -313.0
+offset_top = -1.0
+offset_right = 1466.0
+offset_bottom = 1081.0
 texture = SubResource("AtlasTexture_6g0no")
 expand_mode = 1
 
@@ -50,10 +50,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 288.0
-offset_top = 177.0
-offset_right = 708.0
-offset_bottom = 327.0
+offset_left = 303.0
+offset_top = 195.0
+offset_right = 723.0
+offset_bottom = 345.0
 grow_horizontal = 2
 tooltip_text = "
 "
@@ -64,10 +64,10 @@ script = ExtResource("3_7nbyq")
 
 [node name="Exit_Button" type="TextureButton" parent="Control" unique_id=2076623626]
 layout_mode = 0
-offset_left = 309.0
-offset_top = 473.0
-offset_right = 729.0
-offset_bottom = 623.0
+offset_left = 327.0
+offset_top = 489.0
+offset_right = 747.0
+offset_bottom = 639.0
 texture_normal = SubResource("AtlasTexture_7nbyq")
 texture_pressed = SubResource("AtlasTexture_6ta5r")
 stretch_mode = 5
