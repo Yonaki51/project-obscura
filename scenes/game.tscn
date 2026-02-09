@@ -1,14 +1,15 @@
 [gd_scene format=4 uid="uid://u61wbg78dchm"]
 
-[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_gee14"]
+[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cgr3hr4aoxcie" path="res://scenes/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="3_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="5_iywne"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
-[ext_resource type="PackedScene" uid="uid://b8b371aqyccak" path="res://scenes/enemy_1.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
 [ext_resource type="FontFile" uid="uid://h565vdyf1t2l" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://be2tpi0gilrqd" path="res://scripts/killzone_under_map.gd" id="8_vtaks"]
+[ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="10_vtaks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
 atlas = ExtResource("3_0tnpc")
@@ -90,6 +91,10 @@ limit_bottom = 110
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="enemy1" parent="." unique_id=642628308 instance=ExtResource("7_gee14")]
+position = Vector2(202, -6)
+collision_layer = 3
+
 [node name="killbox" parent="." unique_id=1386055676 instance=ExtResource("5_iywne")]
 z_index = 1
 position = Vector2(300, 103)
@@ -97,6 +102,7 @@ position = Vector2(300, 103)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killbox" unique_id=2069200937]
 position = Vector2(-309, -16)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
+script = ExtResource("8_vtaks")
 
 [node name="platforms" type="Node" parent="." unique_id=421955639]
 
@@ -109,10 +115,6 @@ position = Vector2(383, -27)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platforms/platform2" unique_id=114355446]
 libraries/ = SubResource("AnimationLibrary_iywne")
 autoplay = &"move"
-
-[node name="enemy1" parent="." unique_id=642628308 instance=ExtResource("7_gee14")]
-position = Vector2(202, -6)
-collision_layer = 3
 
 [node name="labels" type="Node" parent="." unique_id=1833961318]
 

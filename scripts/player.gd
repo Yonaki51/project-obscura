@@ -98,6 +98,7 @@ func take_damage(amount: int):
 func heal(amount: int):
 	current_health = min(current_health + amount, max_health)
 	health_bar.update_bar(current_health, max_health)
+	
 # Attacking animation trigger and input mouse for attacking
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not is_attacking and is_on_floor():

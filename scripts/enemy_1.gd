@@ -38,8 +38,5 @@ func handle_hit(damage: int):
 	if health <= 0 and not is_dead:
 		get_node("CollisionShape2D").disabled = true
 		is_dead = true
-
-# calls DIE():
-func die():
-	is_dead = true
-	get_node("CollisionShape2D").disabled = true
+		await get_tree().create_timer(0.3).timeout
+		queue_free()

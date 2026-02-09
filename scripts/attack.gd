@@ -5,13 +5,12 @@ extends Area2D
 @export var damage: int = 10
 
 func attack():
-	monitoring = true
 	animation_player.play("attack_player")
 	
 func _on_attack_body_entered(body: CharacterBody2D) -> void:
-	if body.has_method("handle_hit"):
+	print("Raak:", body.name, " groups:", body.get_groups())
+	if body.is_in_group("enemy"):
 		body.handle_hit(damage)
-		print("Hit:")
 
 func _ready():
 	connect("body_entered", _on_attack_body_entered)
