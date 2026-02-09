@@ -9,17 +9,23 @@ const DASH_COOLDOWN = 0.5
 const MAX_JUMPS = 1
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack: Area2D = $Attack
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 var dash_direction_x = 1  # Direction for dash: -1 (left) or 1 (right)
 var jumps_remaining = MAX_JUMPS
+var is_attacking = false
 
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction at the start
 	var direction := Input.get_axis("move_left", "move_right")
+	if is_attacking:
+		velocity.x = 0
+		move_and_slide()
+		return
 	
 	# Update timers
 	if dash_timer > 0:
@@ -82,3 +88,19 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+# Attacking animation trigger and input mouse for attacking
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and not is_attacking and is_on_floor():
+		print("Attack")
+		is_attacking = true
+		animated_sprite.stop()
+		animated_sprite.play("attack")
+		attack.attack()
+
+func _ready():
+	animated_sprite.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished():
+	if animated_sprite.animation == "attack":
+		is_attacking = false
