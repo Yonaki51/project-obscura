@@ -67,14 +67,16 @@ func _physics_process(delta: float) -> void:
 		is_dashing = true
 		dash_timer = DASH_DURATION
 	
-	# Flip the sprite (only when not dashing to maintain dash direction)
+	# Flip the sprite
 	if not is_dashing:
 		if direction > 0:
 			animated_sprite.flip_h = false
+			# makes the game crash
 			attack_collision.position.x = 14
 			body_collision.position.x = 3
 		elif direction < 0:
 			animated_sprite.flip_h = true
+			# makes the game crash
 			attack_collision.position.x = 2
 			body_collision.position.x = 14
 		

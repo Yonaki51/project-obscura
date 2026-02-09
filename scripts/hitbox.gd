@@ -15,7 +15,7 @@ func _physics_process(_delta):
 			if player.current_health <= 0:
 				print("You died!")
 				Engine.time_scale = 0.5
-				player.get_node("CollisionShape2D").queue_free()
+				player.get_node("CollisionShape2D").disabled = true
 				get_tree().create_timer(1.0).timeout.connect(func():
 					Engine.time_scale = 1
 					get_tree().reload_current_scene()
