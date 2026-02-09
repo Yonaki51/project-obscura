@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwvo0ejnhxlsb" path="res://scripts/enemy_1.gd" id="1_4fg0d"]
 [ext_resource type="Texture2D" uid="uid://bd7tera3xiyq5" path="res://assets/sprites/designed sprites/enemies with weapons.png" id="2_ejytf"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_ejytf"]
+[ext_resource type="Script" uid="uid://dyjhgowu3sih7" path="res://scripts/hitbox.gd" id="3_ejytf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq62l"]
 size = Vector2(13, 17)
@@ -23,7 +23,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejytf"]
-size = Vector2(13, 17)
+size = Vector2(11, 17)
 
 [node name="enemy1" type="CharacterBody2D" unique_id=1668385558 groups=["enemy"]]
 collision_layer = 2
@@ -44,7 +44,7 @@ collision_layer = 2
 script = ExtResource("3_ejytf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox" unique_id=1620744695]
-position = Vector2(-0.5, 1.5)
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_ejytf")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=1293016308]

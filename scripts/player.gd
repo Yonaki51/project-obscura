@@ -9,12 +9,15 @@ const DASH_COOLDOWN = 0.5
 const MAX_JUMPS = 1
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var body_collision: CollisionShape2D = $CollisionShape2D
 @onready var attack: Area2D = $Attack
+@onready var attack_collision: CollisionShape2D = $Attack/attackCollisionPlayer
+@onready var attack_original_position = attack.position
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
-var dash_direction_x = 1  # Direction for dash: -1 (left) or 1 (right)
+var dash_direction_x = 1
 var jumps_remaining = MAX_JUMPS
 @onready var health_bar: Sprite2D = $"../HealthBar/Sprite2D"
 var max_health: int = 10
@@ -61,7 +64,6 @@ func _physics_process(delta: float) -> void:
 			dash_direction_x = -1 if animated_sprite.flip_h else 1
 		else:
 			dash_direction_x = 1 if direction > 0 else -1
-		
 		is_dashing = true
 		dash_timer = DASH_DURATION
 	
@@ -69,8 +71,12 @@ func _physics_process(delta: float) -> void:
 	if not is_dashing:
 		if direction > 0:
 			animated_sprite.flip_h = false
+			attack_collision.position.x = 14
+			body_collision.position.x = 3
 		elif direction < 0:
 			animated_sprite.flip_h = true
+			attack_collision.position.x = 2
+			body_collision.position.x = 14
 		
 	# Play animations
 	if is_on_floor():

@@ -89,7 +89,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/path = NodePath("attackCollisionPlayer:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -105,7 +105,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/path = NodePath("attackCollisionPlayer:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -142,8 +142,8 @@ shape = SubResource("RectangleShape2D_smehm")
 collision_layer = 2
 script = ExtResource("5_qlg0r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1856725927]
-position = Vector2(13.5, -11)
+[node name="attackCollisionPlayer" type="CollisionShape2D" parent="Attack" unique_id=1856725927]
+position = Vector2(14, -10)
 shape = SubResource("RectangleShape2D_tuyoq")
 disabled = true
 
