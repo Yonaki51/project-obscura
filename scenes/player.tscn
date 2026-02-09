@@ -5,10 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dvu5r886ldfvs" path="res://assets/sprites/designed sprites/player characters (frame 2).png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cxdlvorr3x08s" path="res://assets/sprites/designed sprites/player characters (frame 3).png" id="4_qlg0r"]
 [ext_resource type="Script" path="res://scripts/attack.gd" id="5_qlg0r"]
-<<<<<<< Updated upstream
-=======
-[ext_resource type="Script" uid="uid://by2ntylov76ps" path="res://scenes/animated_sprite_2d.gd" id="5_tuyoq"]
->>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -105,7 +101,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "attack_player"
-length = 0.6
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,7 +109,7 @@ tracks/0/path = NodePath("CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.6),
+"times": PackedFloat32Array(0, 0.06666667, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -137,14 +133,12 @@ animation = &"attack"
 autoplay = "idle"
 frame = 2
 frame_progress = 1.0
-script = ExtResource("5_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606710342]
 position = Vector2(3, -9)
 shape = SubResource("RectangleShape2D_smehm")
 
 [node name="Attack" type="Area2D" parent="." unique_id=525247854]
-collision_layer = 2
 script = ExtResource("5_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1856725927]
@@ -153,6 +147,3 @@ shape = SubResource("RectangleShape2D_tuyoq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attack" unique_id=775788367]
 libraries/ = SubResource("AnimationLibrary_ur7pv")
-
-[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
-[connection signal="body_entered" from="Attack" to="Attack" method="_on_body_entered"]
