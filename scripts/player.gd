@@ -15,6 +15,9 @@ var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 var dash_direction_x = 1  # Direction for dash: -1 (left) or 1 (right)
 var jumps_remaining = MAX_JUMPS
+@onready var health_bar: Sprite2D = $"../HealthBar/Sprite2D"
+var max_health: int = 10
+var current_health: int = 10
 
 
 func _physics_process(delta: float) -> void:
@@ -80,5 +83,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
 	move_and_slide()
+	
+func take_damage(amount: int):
+	current_health = max(current_health - amount, 0)
+	health_bar.update_bar(current_health, max_health)
+
+func heal(amount: int):
+	current_health = min(current_health + amount, max_health)
+	health_bar.update_bar(current_health, max_health)

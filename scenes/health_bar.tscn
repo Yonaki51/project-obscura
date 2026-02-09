@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://dhxyra3eb5p12"]
 
-[node name="ProgressBar" type="ProgressBar" unique_id=496371395]
-offset_right = 140.0
-offset_bottom = 27.0
-show_percentage = false
+[ext_resource type="Texture2D" uid="uid://c77nelnbsoscr" path="res://assets/sprites/designed sprites/Healthbar player.png" id="1_y3kqx"]
+[ext_resource type="Script" uid="uid://dts1opluv6mfk" path="res://scripts/health_bar.gd" id="2_6opq1"]
+
+[node name="HealthBar" type="CanvasLayer" unique_id=1365556916]
+layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1369990115]
+z_index = -1
+scale = Vector2(3, 3)
+texture = ExtResource("1_y3kqx")
+centered = false
+vframes = 9
+script = ExtResource("2_6opq1")
