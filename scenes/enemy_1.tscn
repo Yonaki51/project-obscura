@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwvo0ejnhxlsb" path="res://scripts/enemy_1.gd" id="1_4fg0d"]
 [ext_resource type="Texture2D" uid="uid://bd7tera3xiyq5" path="res://assets/sprites/designed sprites/enemies with weapons.png" id="2_ejytf"]
+[ext_resource type="Texture2D" uid="uid://d2gm8ai3gbael" path="res://assets/sprites/designed sprites/enemies with weapons (frame 2 turned around).png" id="3_dq62l"]
 [ext_resource type="Script" uid="uid://dyjhgowu3sih7" path="res://scripts/hitbox.gd" id="3_ejytf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq62l"]
@@ -11,16 +12,39 @@ size = Vector2(13, 17)
 atlas = ExtResource("2_ejytf")
 region = Rect2(59, 1, 19, 19)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3026"]
+atlas = ExtResource("3_dq62l")
+region = Rect2(64, 12, 18, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l21ug"]
+atlas = ExtResource("3_dq62l")
+region = Rect2(64, 12, 16, 22)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_v5wyi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dq62l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3026")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l21ug")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 7.0
 }]
+
+[sub_resource type="Animation" id="Animation_l21ug"]
+resource_name = "enemy_attack"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6nrqq"]
+_data = {
+&"enemy_attack": SubResource("Animation_l21ug")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejytf"]
 size = Vector2(11, 17)
@@ -34,14 +58,18 @@ position = Vector2(-0.5, -10.5)
 shape = SubResource("RectangleShape2D_dq62l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1701398415]
-position = Vector2(0, -12)
+position = Vector2(-0.77047634, -12)
+scale = Vector2(1.1337342, 1)
 sprite_frames = SubResource("SpriteFrames_v5wyi")
 autoplay = "default"
-frame_progress = 0.32835037
+frame_progress = 0.6336304
 
 [node name="hitbox" type="Area2D" parent="AnimatedSprite2D" unique_id=1632746074]
 collision_layer = 2
 script = ExtResource("3_ejytf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D/hitbox" unique_id=322384583]
+libraries/ = SubResource("AnimationLibrary_6nrqq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox" unique_id=1620744695]
 position = Vector2(0.5, 1)

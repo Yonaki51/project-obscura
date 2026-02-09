@@ -71,12 +71,12 @@ func _physics_process(delta: float) -> void:
 	if not is_dashing:
 		if direction > 0:
 			animated_sprite.flip_h = false
-			# makes the game crash
+			# fixed bug, makes the player and attack box turn around
 			attack_collision.position.x = 14
 			body_collision.position.x = 3
 		elif direction < 0:
 			animated_sprite.flip_h = true
-			# makes the game crash
+			# fixed bug, makes the player and attack box turn around
 			attack_collision.position.x = 2
 			body_collision.position.x = 14
 		

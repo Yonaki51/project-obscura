@@ -31,7 +31,6 @@ func _process(delta: float):
 
 	position.x += direction * SPEED * delta
 
-
 func handle_hit(damage: int):
 	health -= damage
 	#if health = 0

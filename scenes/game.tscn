@@ -8,7 +8,6 @@
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
 [ext_resource type="FontFile" uid="uid://h565vdyf1t2l" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
-[ext_resource type="Script" uid="uid://be2tpi0gilrqd" path="res://scripts/killzone_under_map.gd" id="8_vtaks"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="10_vtaks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
@@ -16,6 +15,17 @@ atlas = ExtResource("3_0tnpc")
 region = Rect2(8.667847, 13.251907, 1862.7582, 1013.18475)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+
+[sub_resource type="GDScript" id="GDScript_0tnpc"]
+script/source = "extends CollisionShape2D
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"player\"):
+		body.get_node(\"CollisionShape2D\").disabled = true
+	elif body.is_in_group(\"enemy\"):
+		body.get_node(\"CollisionShape2D\").disabled = true
+"
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 length = 0.001
@@ -102,7 +112,7 @@ position = Vector2(300, 103)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killbox" unique_id=2069200937]
 position = Vector2(-309, -16)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
-script = ExtResource("8_vtaks")
+script = SubResource("GDScript_0tnpc")
 
 [node name="platforms" type="Node" parent="." unique_id=421955639]
 
