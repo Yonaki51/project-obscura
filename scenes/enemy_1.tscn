@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b8b371aqyccak"]
 
-[ext_resource type="Script" uid="uid://dwvo0ejnhxlsb" path="res://scripts/enemy_1.gd" id="1_4fg0d"]
+[ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_4fg0d"]
 [ext_resource type="Texture2D" uid="uid://bd7tera3xiyq5" path="res://assets/sprites/designed sprites/enemies with weapons.png" id="2_ejytf"]
-[ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="2_n6pvg"]
+[ext_resource type="Script" uid="uid://dyjhgowu3sih7" path="res://scripts/hitbox.gd" id="3_ejytf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dq62l"]
 atlas = ExtResource("2_ejytf")
@@ -19,8 +19,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l8pv"]
-size = Vector2(11, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejytf"]
+size = Vector2(15, 17)
 
 [node name="enemy1" type="Node2D" unique_id=642628308]
 position = Vector2(0, 2)
@@ -32,12 +32,13 @@ sprite_frames = SubResource("SpriteFrames_v5wyi")
 autoplay = "default"
 frame_progress = 0.32835037
 
-[node name="killbox" parent="." unique_id=1386055676 instance=ExtResource("2_n6pvg")]
-position = Vector2(0, -12)
+[node name="hitbox" type="Area2D" parent="AnimatedSprite2D" unique_id=1632746074]
+collision_layer = 2
+script = ExtResource("3_ejytf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox" unique_id=491824918]
-position = Vector2(0.5, 1.6000004)
-shape = SubResource("RectangleShape2D_0l8pv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox" unique_id=1620744695]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_ejytf")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=1293016308]
 position = Vector2(0, -7)
@@ -46,3 +47,5 @@ target_position = Vector2(12, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1141412949]
 position = Vector2(0, -7)
 target_position = Vector2(-11, -0.4000001)
+
+[connection signal="body_entered" from="AnimatedSprite2D/hitbox" to="AnimatedSprite2D/hitbox" method="_on_body_entered"]
