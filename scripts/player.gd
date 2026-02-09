@@ -9,6 +9,7 @@ const DASH_COOLDOWN = 0.5
 const MAX_JUMPS = 1
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack: Area2D = $Attack
 
 var is_dashing = false
 var dash_timer = 0.0
@@ -18,11 +19,16 @@ var jumps_remaining = MAX_JUMPS
 @onready var health_bar: Sprite2D = $"../HealthBar/Sprite2D"
 var max_health: int = 10
 var current_health: int = 10
+var is_attacking = false
 
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction at the start
 	var direction := Input.get_axis("move_left", "move_right")
+	if is_attacking:
+		velocity.x = 0
+		move_and_slide()
+		return
 	
 	# Update timers
 	if dash_timer > 0:
@@ -92,3 +98,18 @@ func take_damage(amount: int):
 func heal(amount: int):
 	current_health = min(current_health + amount, max_health)
 	health_bar.update_bar(current_health, max_health)
+# Attacking animation trigger and input mouse for attacking
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and not is_attacking and is_on_floor():
+		print("Attack")
+		is_attacking = true
+		animated_sprite.stop()
+		animated_sprite.play("attack")
+		attack.attack()
+
+func _ready():
+	animated_sprite.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished():
+	if animated_sprite.animation == "attack":
+		is_attacking = false
