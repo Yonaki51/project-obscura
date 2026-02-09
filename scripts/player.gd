@@ -92,7 +92,6 @@ func _physics_process(delta: float) -> void:
 # Attacking animation trigger and input mouse for attacking
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not is_attacking and is_on_floor():
-		print("Attack")
 		is_attacking = true
 		animated_sprite.stop()
 		animated_sprite.play("attack")

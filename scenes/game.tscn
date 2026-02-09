@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="3_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="5_iywne"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
-[ext_resource type="PackedScene" uid="uid://b8b371aqyccak" path="res://scenes/enemy_1.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
 [ext_resource type="FontFile" uid="uid://h565vdyf1t2l" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
@@ -108,7 +108,8 @@ libraries/ = SubResource("AnimationLibrary_iywne")
 autoplay = &"move"
 
 [node name="enemy1" parent="." unique_id=642628308 instance=ExtResource("7_gee14")]
-position = Vector2(137, -7)
+position = Vector2(202, -6)
+collision_layer = 3
 
 [node name="labels" type="Node" parent="." unique_id=1833961318]
 
