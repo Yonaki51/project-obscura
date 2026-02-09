@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
 [ext_resource type="FontFile" uid="uid://h565vdyf1t2l" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="10_vtaks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
 atlas = ExtResource("3_0tnpc")
@@ -54,6 +55,8 @@ _data = {
 }
 
 [node name="game" type="Node2D" unique_id=1576081186]
+
+[node name="HealthBar" parent="." unique_id=1365556916 instance=ExtResource("10_vtaks")]
 
 [node name="GameManager" type="Node" parent="." unique_id=2116554109]
 unique_name_in_owner = true

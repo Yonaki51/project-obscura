@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c77nelnbsoscr"
-path="res://.godot/imported/Healthbar player.png-3207ac44e1e3273ed56365a1e3e97363.ctex"
+uid="uid://gq5fgf4o47k1"
+path="res://.godot/imported/enemy_ouch.png-5c7dae130edb12dfb770fa589bc08454.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/designed sprites/Healthbar player.png"
-dest_files=["res://.godot/imported/Healthbar player.png-3207ac44e1e3273ed56365a1e3e97363.ctex"]
+source_file="res://assets/sprites/designed sprites/enemy_ouch.png"
+dest_files=["res://.godot/imported/enemy_ouch.png-5c7dae130edb12dfb770fa589bc08454.ctex"]
 
 [params]
 

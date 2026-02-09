@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ckwhd410hs4bt" path="res://assets/sprites/designed sprites/player characters (walking with weapon).png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dvu5r886ldfvs" path="res://assets/sprites/designed sprites/player characters (frame 2).png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cxdlvorr3x08s" path="res://assets/sprites/designed sprites/player characters (frame 3).png" id="4_qlg0r"]
-[ext_resource type="Script" uid="uid://qdb256he0wg3" path="res://scripts/attack.gd" id="5_qlg0r"]
+[ext_resource type="Script" path="res://scripts/attack.gd" id="5_qlg0r"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Script" uid="uid://by2ntylov76ps" path="res://scenes/animated_sprite_2d.gd" id="5_tuyoq"]
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -121,7 +125,7 @@ _data = {
 &"attack_player": SubResource("Animation_smehm")
 }
 
-[node name="player" type="CharacterBody2D" unique_id=526401065]
+[node name="player" type="CharacterBody2D" unique_id=526401065 groups=["player"]]
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -133,6 +137,7 @@ animation = &"attack"
 autoplay = "idle"
 frame = 2
 frame_progress = 1.0
+script = ExtResource("5_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606710342]
 position = Vector2(3, -9)
