@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dwvo0ejnhxlsb" path="res://scripts/enemy_1.gd" id="1_4fg0d"]
 [ext_resource type="Texture2D" uid="uid://bd7tera3xiyq5" path="res://assets/sprites/designed sprites/enemies with weapons.png" id="2_ejytf"]
 [ext_resource type="Texture2D" uid="uid://d2gm8ai3gbael" path="res://assets/sprites/designed sprites/enemies with weapons (frame 2 turned around).png" id="3_dq62l"]
-[ext_resource type="Script" uid="uid://dyjhgowu3sih7" path="res://scripts/hitbox.gd" id="3_ejytf"]
+[ext_resource type="PackedScene" uid="uid://dcpg2c7qtxg8o" path="res://scenes/hitbox.tscn" id="4_dq62l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq62l"]
 size = Vector2(13, 17)
@@ -37,6 +37,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejytf"]
+size = Vector2(11, 17)
+
 [sub_resource type="Animation" id="Animation_l21ug"]
 resource_name = "enemy_attack"
 length = 0.5
@@ -45,9 +48,6 @@ length = 0.5
 _data = {
 &"enemy_attack": SubResource("Animation_l21ug")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejytf"]
-size = Vector2(11, 17)
 
 [node name="enemy1" type="CharacterBody2D" unique_id=1668385558 groups=["enemy"]]
 collision_layer = 2
@@ -64,16 +64,16 @@ sprite_frames = SubResource("SpriteFrames_v5wyi")
 autoplay = "default"
 frame_progress = 0.6336304
 
-[node name="hitbox" type="Area2D" parent="AnimatedSprite2D" unique_id=1632746074]
-collision_layer = 2
-script = ExtResource("3_ejytf")
+[node name="hitbox2" parent="." unique_id=1014052213 instance=ExtResource("4_dq62l")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D/hitbox" unique_id=322384583]
-libraries/ = SubResource("AnimationLibrary_6nrqq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox" unique_id=1620744695]
-position = Vector2(0.5, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox2" unique_id=1620744695]
+position = Vector2(-0.20360923, -11)
+scale = Vector2(1.1337342, 1)
 shape = SubResource("RectangleShape2D_ejytf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hitbox2" unique_id=322384583]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_6nrqq")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=1293016308]
 position = Vector2(0, -7)
@@ -86,5 +86,3 @@ target_position = Vector2(-11, -0.4000001)
 [node name="RayCastDown" type="RayCast2D" parent="." unique_id=985453340]
 position = Vector2(0, -7)
 target_position = Vector2(0, 7)
-
-[connection signal="body_entered" from="AnimatedSprite2D/hitbox" to="AnimatedSprite2D/hitbox" method="_on_body_entered"]
