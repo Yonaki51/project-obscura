@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bhwmhhgq8fgjb"]
+
+[ext_resource type="Script" uid="uid://dwvo0ejnhxlsb" path="res://scripts/enemy_1.gd" id="1_a4ywr"]
+[ext_resource type="Texture2D" uid="uid://bd7tera3xiyq5" path="res://assets/sprites/designed sprites/enemies with weapons.png" id="2_k4auq"]
+[ext_resource type="Texture2D" uid="uid://d2gm8ai3gbael" path="res://assets/sprites/designed sprites/enemies with weapons (frame 2 turned around).png" id="3_fdqbe"]
+[ext_resource type="Script" uid="uid://dyjhgowu3sih7" path="res://scripts/hitbox.gd" id="4_a2yeo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq62l"]
+size = Vector2(13, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ywr"]
+atlas = ExtResource("2_k4auq")
+region = Rect2(55, 22, 22, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4auq"]
+atlas = ExtResource("3_fdqbe")
+region = Rect2(64, 34, 18, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdqbe"]
+atlas = ExtResource("3_fdqbe")
+region = Rect2(63, 34, 18, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5wyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ywr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4auq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdqbe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_l21ug"]
+resource_name = "enemy_attack"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6nrqq"]
+_data = {
+&"enemy_attack": SubResource("Animation_l21ug")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejytf"]
+size = Vector2(11, 17)
+
+[node name="enemy2" type="CharacterBody2D" unique_id=1668385558 groups=["enemy"]]
+collision_layer = 2
+script = ExtResource("1_a4ywr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2147217911]
+position = Vector2(-0.5, -10.5)
+shape = SubResource("RectangleShape2D_dq62l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1701398415]
+position = Vector2(-1, -11.000001)
+scale = Vector2(0.96552515, 0.9736842)
+sprite_frames = SubResource("SpriteFrames_v5wyi")
+autoplay = "default"
+frame_progress = 0.3027084
+
+[node name="hitbox" type="Area2D" parent="AnimatedSprite2D" unique_id=1632746074]
+collision_layer = 2
+script = ExtResource("4_a2yeo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D/hitbox" unique_id=322384583]
+libraries/ = SubResource("AnimationLibrary_6nrqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox" unique_id=1620744695]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_ejytf")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1293016308]
+position = Vector2(0, -7)
+target_position = Vector2(12, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=585164106]
+position = Vector2(0, -7)
+target_position = Vector2(-11, -0.4000001)
+
+[node name="RayCastDown" type="RayCast2D" parent="." unique_id=985453340]
+position = Vector2(0, -7)
+target_position = Vector2(0, 7)
+
+[connection signal="body_entered" from="AnimatedSprite2D/hitbox" to="AnimatedSprite2D/hitbox" method="_on_body_entered"]

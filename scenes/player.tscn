@@ -79,7 +79,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
-size = Vector2(6, 18)
+size = Vector2(5, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 size = Vector2(13, 14)
@@ -135,7 +135,7 @@ frame = 2
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606710342]
-position = Vector2(3, -9)
+position = Vector2(2.5, -9)
 shape = SubResource("RectangleShape2D_smehm")
 
 [node name="Attack" type="Area2D" parent="." unique_id=525247854]
