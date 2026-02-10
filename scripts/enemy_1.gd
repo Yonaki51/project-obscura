@@ -16,6 +16,8 @@ var vertical_velocity = 0.0
 
 func _process(delta: float):
 	if is_dead:
+		animated_sprite.stop()
+		modulate = Color(0.81, 0.0, 0.186, 1.0)
 		vertical_velocity += GRAVITY * delta
 		position.y += vertical_velocity * delta
 		return
@@ -32,6 +34,9 @@ func _process(delta: float):
 
 func handle_hit(damage: int):
 	health -= damage
+	modulate = Color(1.0, 0.42, 0.433, 1.0)
+	await get_tree().create_timer(0.3).timeout
+	modulate = Color(1, 1, 1)
 	#if health = 0
 	if health <= 0 and not is_dead:
 		get_node("CollisionShape2D").disabled = true

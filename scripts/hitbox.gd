@@ -13,10 +13,11 @@ func _physics_process(_delta):
 
 			cooldown = true
 			player.take_damage(1)
-			player.modulate = Color(1, 0.5, 0.5)
+			player.modulate = Color(1.0, 0.311, 0.354, 1.0)
 			
 			if player.current_health <= 0:
 				print("You died!")
+				player.modulate = Color(0.81, 0.0, 0.186, 1.0)
 				Engine.time_scale = 0.5
 				player.get_node("CollisionShape2D").disabled = true
 				get_tree().create_timer(1.0).timeout.connect(func():
