@@ -1,14 +1,16 @@
 [gd_scene format=4 uid="uid://u61wbg78dchm"]
 
-[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_gee14"]
+[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cgr3hr4aoxcie" path="res://scenes/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="3_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="5_iywne"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
-[ext_resource type="PackedScene" path="res://scenes/spikes.tscn" id="7_kvpfn"]
-[ext_resource type="Script" path="res://obstacles_hitbox.gd" id="8_dinhu"]
+[ext_resource type="PackedScene" uid="uid://4piop10ulqh7" path="res://scenes/spikes.tscn" id="7_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://coosthjuy5mjp" path="res://scenes/snake.tscn" id="7_kvuet"]
+[ext_resource type="PackedScene" uid="uid://c2k65845130gh" path="res://scenes/snake2.tscn" id="7_trtic"]
+[ext_resource type="Script" uid="uid://cwdcyitxxvgn5" path="res://obstacles_hitbox.gd" id="8_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dp2iwijpg0wn6" path="res://scenes/enemy_3.tscn" id="10_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bhwmhhgq8fgjb" path="res://scenes/enemy_2.tscn" id="10_kvpfn"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="10_vtaks"]
@@ -117,6 +119,14 @@ libraries/ = SubResource("AnimationLibrary_iywne")
 autoplay = &"move"
 
 [node name="labels" type="Node" parent="." unique_id=1833961318]
+
+[node name="snake" type="Node" parent="." unique_id=804730919]
+
+[node name="snake3" parent="snake" unique_id=1033407199 instance=ExtResource("7_trtic")]
+position = Vector2(-86, -9)
+
+[node name="snake2" parent="snake" unique_id=1805749227 instance=ExtResource("7_kvuet")]
+position = Vector2(-69, -9)
 
 [node name="spikes" type="Node" parent="." unique_id=1328272092]
 
