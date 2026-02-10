@@ -24,7 +24,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_l21ug"]
 resource_name = "enemy_attack"
-length = 0.5
+length = 5.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fbh7e"]
 _data = {

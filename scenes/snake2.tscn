@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c2k65845130gh"]
+
+[ext_resource type="Texture2D" uid="uid://2f1e5u6jbvtg" path="res://assets/sprites/designed sprites/Snake_textures.png" id="1_gi4g3"]
+[ext_resource type="PackedScene" uid="uid://dcpg2c7qtxg8o" path="res://scenes/hitbox.tscn" id="2_b8p61"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4b1q"]
+atlas = ExtResource("1_gi4g3")
+region = Rect2(5, 27, 19, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4j5f3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4b1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p8c4"]
+size = Vector2(12, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmesk"]
+atlas = ExtResource("1_gi4g3")
+region = Rect2(4, 52, 19, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qmou"]
+atlas = ExtResource("1_gi4g3")
+region = Rect2(55, 52, 18, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8nt4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmesk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qmou")
+}],
+"loop": true,
+"name": &"snake",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_uotcb"]
+length = 5.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_l21ug"]
+resource_name = "enemy_attack"
+length = 5.0
+
+[sub_resource type="Animation" id="Animation_21w4a"]
+resource_name = "snake_up"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.58, 1.19, 1.59, 2.03, 2.3333333, 2.6, 2.82, 3.02, 3.15, 3.29, 3.5, 3.88, 4.33, 4.69, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 10), Vector2(-1, 2), Vector2(-1, -4), Vector2(-1, -6), Vector2(-1, -11), Vector2(-1, -10.612244), Vector2(-1, -10), Vector2(-1, -10.6), Vector2(-1, -11), Vector2(-0.93, -9.5), Vector2(-0.958, -8), Vector2(-1, -6), Vector2(-1, -1), Vector2(-1, 2), Vector2(-1, 6), Vector2(-1, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1qxe"]
+_data = {
+&"RESET": SubResource("Animation_uotcb"),
+&"enemy_attack": SubResource("Animation_l21ug"),
+&"snake_up": SubResource("Animation_21w4a")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px58k"]
+size = Vector2(6, 18)
+
+[node name="snake" type="Area2D" unique_id=1033407199]
+z_index = -1
+
+[node name="Dirt" type="AnimatedSprite2D" parent="." unique_id=1776497896]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_4j5f3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=170138704]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_1p8c4")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=972880359]
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_8nt4g")
+animation = &"snake"
+autoplay = "snake"
+frame_progress = 0.7202552
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D" unique_id=984310963]
+root_node = NodePath("../hitbox")
+libraries/ = SubResource("AnimationLibrary_l1qxe")
+autoplay = &"snake_up"
+
+[node name="hitbox" parent="CollisionShape2D" unique_id=1014052213 instance=ExtResource("2_b8p61")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/hitbox" unique_id=1908694632]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_px58k")
