@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://jx5sfhgjynkj"]
 
+[ext_resource type="Script" uid="uid://dn3lojifqdyyk" path="res://scripts/coconut.gd" id="1_11530"]
 [ext_resource type="Texture2D" uid="uid://61jumkoj07we" path="res://assets/sprites/designed sprites/Coconut.png" id="1_qfs6l"]
-[ext_resource type="PackedScene" uid="uid://dcpg2c7qtxg8o" path="res://scenes/hitbox.tscn" id="2_11530"]
-[ext_resource type="Script" uid="uid://cwdcyitxxvgn5" path="res://obstacles_hitbox.gd" id="3_b807c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuosx"]
-size = Vector2(4, 4)
+size = Vector2(8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro8yr"]
 atlas = ExtResource("1_qfs6l")
@@ -22,35 +21,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_l21ug"]
-resource_name = "enemy_attack"
-length = 5.0
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iqak5"]
-_data = {
-&"enemy_attack": SubResource("Animation_l21ug")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bb80"]
-size = Vector2(4, 4)
-
-[node name="Area2D" type="Area2D" unique_id=1522227865]
+[node name="Coconut" type="Area2D" unique_id=1522227865]
+script = ExtResource("1_11530")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1196473178]
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_wuosx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1322885058]
-position = Vector2(0.12499936, -2.375)
-scale = Vector2(0.21296297, 0.19444443)
+position = Vector2(-4.7683716e-07, -3.9999998)
+scale = Vector2(0.3240741, 0.28180352)
 sprite_frames = SubResource("SpriteFrames_m53wd")
-
-[node name="hitbox3" parent="." unique_id=1014052213 instance=ExtResource("2_11530")]
-position = Vector2(0, -2)
-script = ExtResource("3_b807c")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="hitbox3" unique_id=1377966352]
-libraries/ = SubResource("AnimationLibrary_iqak5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox3" unique_id=362319017]
-shape = SubResource("RectangleShape2D_1bb80")

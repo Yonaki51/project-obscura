@@ -13,17 +13,20 @@ const MAX_JUMPS = 1
 @onready var attack: Area2D = $Attack
 @onready var attack_collision: CollisionShape2D = $Attack/attackCollisionPlayer
 @onready var attack_original_position = attack.position
+@onready var health_bar: Sprite2D = $"../HealthBar/Sprite2D"
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 var dash_direction_x = 1
 var jumps_remaining = MAX_JUMPS
-@onready var health_bar: Sprite2D = $"../HealthBar/Sprite2D"
+
 var max_health: int = 10
 var current_health: int = 10
 var is_attacking = false
 
+var idle_timer: float = 0.0
+var is_moving: bool = false
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction at the start
@@ -32,8 +35,25 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		move_and_slide()
 		return
+		
+		# Check if player is moving
+	if velocity.length() > 0:
+		is_moving = true
+		idle_timer = 0.0
+	else:
+		is_moving = false
+		idle_timer += delta
 	
-	# Update timers
+	# If player is 3 seconds idle. Coconut falls
+	if idle_timer >= 3.0:
+		var coconut = get_tree().get_first_node_in_group("coconut")
+		if coconut and not coconut.is_falling:
+		# Calculate the collisionbox of the player
+			var collision_pos = global_position + body_collision.position
+			coconut.start_falling(collision_pos)
+			idle_timer = 0.0
+	
+	# Updates Timer
 	if dash_timer > 0:
 		dash_timer -= delta
 		if dash_timer <= 0:

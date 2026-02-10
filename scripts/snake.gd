@@ -38,4 +38,4 @@ func _damage_loop(player):
 			await get_tree().create_timer(0.5).timeout
 			if is_instance_valid(player):
 				player.modulate = Color(1, 1, 1)
-			await get_tree().create_timer(0.5).timeout  # Totaal 1 seconde
+			await get_tree().create_timer(0.5).timeout

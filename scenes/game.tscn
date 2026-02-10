@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dp2iwijpg0wn6" path="res://scenes/enemy_3.tscn" id="10_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bhwmhhgq8fgjb" path="res://scenes/enemy_2.tscn" id="10_kvpfn"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="10_vtaks"]
-[ext_resource type="PackedScene" path="res://scenes/falling_platform.tscn" id="15_ir15t"]
+[ext_resource type="PackedScene" uid="uid://iyrn2lgn8hxt" path="res://scenes/falling_platform.tscn" id="15_ir15t"]
+[ext_resource type="PackedScene" uid="uid://jx5sfhgjynkj" path="res://scenes/coconut.tscn" id="16_ca42v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
 atlas = ExtResource("3_0tnpc")
@@ -162,3 +163,6 @@ position = Vector2(300, 103)
 position = Vector2(-266, -12)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 script = SubResource("GDScript_0tnpc")
+
+[node name="Coconut" parent="." unique_id=1522227865 instance=ExtResource("16_ca42v")]
+position = Vector2(1, -256)

@@ -18,13 +18,20 @@ func _on_body_exited(body):
 func _damage_loop(body):
 	while player_in_area and is_instance_valid(body):
 		body.take_damage(1)
+		
+		if not is_instance_valid(body):  # Check VOOR je body gebruikt
+			return
+			
 		body.modulate = Color(1.0, 0.311, 0.354, 1.0)
 		
 		if body.current_health <= 0:
 			print("You died!")
 			body.modulate = Color(0.81, 0.0, 0.186, 1.0)
 			Engine.time_scale = 0.5
-			body.get_node("CollisionShape2D").disabled = true
+			
+			if body.has_node("CollisionShape2D"):  # Check of node bestaat
+				body.get_node("CollisionShape2D").disabled = true
+				
 			get_tree().create_timer(1.0).timeout.connect(func():
 				Engine.time_scale = 1
 				get_tree().reload_current_scene()
@@ -32,6 +39,8 @@ func _damage_loop(body):
 			return
 		else:
 			await get_tree().create_timer(0.5).timeout
-			if is_instance_valid(body):
+			
+			if is_instance_valid(body):  # Check VOOR je body gebruikt
 				body.modulate = Color(1, 1, 1)
-			await get_tree().create_timer(0.5).timeout  # Totaal 1 seconde (0.5 + 0.5)
+				
+			await get_tree().create_timer(0.5).timeout  # Totaal 1 seconde
