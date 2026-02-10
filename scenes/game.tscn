@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://u61wbg78dchm"]
 
-[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_gee14"]
+[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cgr3hr4aoxcie" path="res://scenes/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="3_0tnpc"]
@@ -8,24 +8,13 @@
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
 [ext_resource type="FontFile" uid="uid://h565vdyf1t2l" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dp2iwijpg0wn6" path="res://scenes/enemy_3.tscn" id="10_dinhu"]
+[ext_resource type="PackedScene" uid="uid://bhwmhhgq8fgjb" path="res://scenes/enemy_2.tscn" id="10_kvpfn"]
+[ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="10_vtaks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
 atlas = ExtResource("3_0tnpc")
 region = Rect2(8.667847, 13.251907, 1862.7582, 1013.18475)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
-
-[sub_resource type="GDScript" id="GDScript_0tnpc"]
-script/source = "extends CollisionShape2D
-
-
-func _on_body_entered(body: Node) -> void:
-	if body.is_in_group(\"player\"):
-		body.get_node(\"CollisionShape2D\").disabled = true
-	elif body.is_in_group(\"enemy\"):
-		body.get_node(\"CollisionShape2D\").disabled = true
-"
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 length = 0.001
@@ -65,6 +54,19 @@ _data = {
 &"move": SubResource("Animation_lbhrr")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+
+[sub_resource type="GDScript" id="GDScript_0tnpc"]
+script/source = "extends CollisionShape2D
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"player\"):
+		body.get_node(\"CollisionShape2D\").disabled = true
+	elif body.is_in_group(\"enemy\"):
+		body.get_node(\"CollisionShape2D\").disabled = true
+"
+
 [node name="game" type="Node2D" unique_id=1576081186]
 
 [node name="HealthBar" parent="." unique_id=1365556916 instance=ExtResource("10_vtaks")]
@@ -82,14 +84,14 @@ tile_set = ExtResource("5_p57ef")
 
 [node name="Sprite2D" type="Sprite2D" parent="tilemaps/background" unique_id=1161048196]
 show_behind_parent = true
-position = Vector2(101.00001, -32)
+position = Vector2(139.00002, -70.00001)
 scale = Vector2(0.25990322, 0.2591381)
 texture = SubResource("AtlasTexture_0tnpc")
 
 [node name="midground" type="TileMapLayer" parent="tilemaps" unique_id=1551911233]
 use_parent_material = true
 position = Vector2(-13, -9)
-tile_map_data = PackedByteArray("AAAAAP//AAACAAEAAAAAAAAAAAACAAEAAAAAAAEAAAACAAEAAAAAAAIAAAADAAEAAAAAAAMAAAACAAEAAAABAAAAAAADAAEAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAABAAMAAAACAAEAAAACAAAAAAACAAEAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAADAAEAAAADAAAAAAACAAEAAAADAAEAAAADAAEAAAADAAIAAAACAAEAAAADAAMAAAACAAEAAAAEAAAAAAACAAEAAAAEAAEAAAACAAEAAAAEAAIAAAADAAEAAAAEAAMAAAACAAEAAAAFAAAAAAACAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAFAAMAAAACAAEAAAAGAAAAAAACAAEAAAAGAAEAAAACAAEAAAAGAAIAAAACAAEAAAAGAAMAAAACAAEAAAAHAAAAAAACAAEAAAAHAAEAAAADAAEAAAAHAAIAAAACAAEAAAAHAAMAAAACAAEAAAAIAAAAAAACAAEAAAAIAAEAAAACAAEAAAAIAAIAAAACAAEAAAAIAAMAAAADAAEAAAAJAAAAAAACAAEAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAKAAAAAAACAAEAAAAKAAEAAAADAAEAAAAKAAIAAAADAAEAAAAKAAMAAAACAAEAAAALAAAAAAACAAEAAAALAAEAAAACAAEAAAALAAIAAAACAAEAAAALAAMAAAACAAEAAAAMAAAAAAACAAEAAAAMAAEAAAACAAEAAAAMAAIAAAACAAEAAAAMAAMAAAACAAEAAAANAAAAAAACAAEAAAANAAEAAAACAAEAAAANAAIAAAADAAEAAAANAAMAAAACAAEAAAAOAAAAAAACAAEAAAAOAAEAAAADAAEAAAAOAAIAAAACAAEAAAAOAAMAAAACAAEAAAAPAAAAAAACAAEAAAAPAAEAAAADAAEAAAAPAAIAAAACAAEAAAAPAAMAAAACAAEAAAAQAP//AAACAAIAAAAQAAAAAAACAAEAAAAQAAEAAAACAAEAAAAQAAIAAAACAAEAAAAQAAMAAAACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAAAAAEAAAACAAEAAAAAAAIAAAADAAEAAAAAAAMAAAACAAEAAAABAAAAAAADAAEAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAABAAMAAAACAAEAAAACAAAAAAACAAEAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAADAAEAAAADAAAAAAACAAEAAAADAAEAAAADAAEAAAADAAIAAAACAAEAAAADAAMAAAACAAEAAAAEAAAAAAACAAEAAAAEAAEAAAACAAEAAAAEAAIAAAADAAEAAAAEAAMAAAACAAEAAAAFAAAAAAACAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAFAAMAAAACAAEAAAAGAAAAAAACAAEAAAAGAAEAAAACAAEAAAAGAAIAAAACAAEAAAAGAAMAAAACAAEAAAAHAAAAAAACAAEAAAAHAAEAAAADAAEAAAAHAAIAAAACAAEAAAAHAAMAAAACAAEAAAAIAAAAAAACAAEAAAAIAAEAAAACAAEAAAAIAAIAAAACAAEAAAAIAAMAAAADAAEAAAAJAAAAAAACAAEAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAKAAAAAAACAAEAAAAKAAEAAAADAAEAAAAKAAIAAAADAAEAAAAKAAMAAAACAAEAAAALAAAAAAACAAEAAAALAAEAAAACAAEAAAALAAIAAAACAAEAAAALAAMAAAACAAEAAAAMAAAAAAACAAEAAAAMAAEAAAACAAEAAAAMAAIAAAACAAEAAAAMAAMAAAACAAEAAAANAAAAAAACAAEAAAANAAEAAAACAAEAAAANAAIAAAADAAEAAAANAAMAAAACAAEAAAAOAAAAAAACAAEAAAAOAAEAAAADAAEAAAAOAAIAAAACAAEAAAAOAAMAAAACAAEAAAAPAAAAAAACAAEAAAAPAAEAAAADAAEAAAAPAAIAAAACAAEAAAAPAAMAAAACAAEAAAAQAP//AAACAAIAAAAQAAAAAAACAAEAAAAQAAEAAAACAAEAAAAQAAIAAAACAAEAAAAQAAMAAAACAAEAAAAAAP//AAACAAEAAAAFAP//AAACAAEAAAALAP//AAACAAEAAAA=")
 tile_set = ExtResource("5_p57ef")
 
 [node name="player" parent="." unique_id=526401065 instance=ExtResource("1_uwrxv")]
@@ -100,19 +102,6 @@ zoom = Vector2(4, 4)
 limit_bottom = 110
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="enemy1" parent="." unique_id=642628308 instance=ExtResource("7_gee14")]
-position = Vector2(202, -6)
-collision_layer = 3
-
-[node name="killbox" parent="." unique_id=1386055676 instance=ExtResource("5_iywne")]
-z_index = 1
-position = Vector2(300, 103)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox" unique_id=2069200937]
-position = Vector2(-309, -16)
-shape = SubResource("WorldBoundaryShape2D_p57ef")
-script = SubResource("GDScript_0tnpc")
 
 [node name="platforms" type="Node" parent="." unique_id=421955639]
 
@@ -137,3 +126,24 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_u5sy4")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump"
+
+[node name="Enemies" type="Node" parent="." unique_id=72329355]
+
+[node name="enemy1" parent="Enemies" unique_id=642628308 instance=ExtResource("7_gee14")]
+position = Vector2(202, -6)
+collision_layer = 3
+
+[node name="enemy2" parent="Enemies" unique_id=1668385558 instance=ExtResource("10_kvpfn")]
+position = Vector2(35, -6)
+
+[node name="enemy3" parent="Enemies" unique_id=1667306573 instance=ExtResource("10_dinhu")]
+position = Vector2(123, -6)
+
+[node name="killbox" parent="." unique_id=1386055676 instance=ExtResource("5_iywne")]
+z_index = 1
+position = Vector2(300, 103)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox" unique_id=2069200937]
+position = Vector2(-309, -16)
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+script = SubResource("GDScript_0tnpc")
