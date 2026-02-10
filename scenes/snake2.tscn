@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://2f1e5u6jbvtg" path="res://assets/sprites/designed sprites/Snake_textures.png" id="1_gi4g3"]
 [ext_resource type="PackedScene" uid="uid://dcpg2c7qtxg8o" path="res://scenes/hitbox.tscn" id="2_b8p61"]
+[ext_resource type="Script" uid="uid://csw32aptjj1sj" path="res://scripts/snake.gd" id="3_b8p61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4b1q"]
 atlas = ExtResource("1_gi4g3")
@@ -40,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"snake",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="Animation" id="Animation_uotcb"]
@@ -113,6 +114,7 @@ libraries/ = SubResource("AnimationLibrary_l1qxe")
 autoplay = &"snake_up"
 
 [node name="hitbox" parent="CollisionShape2D" unique_id=1014052213 instance=ExtResource("2_b8p61")]
+script = ExtResource("3_b8p61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/hitbox" unique_id=1908694632]
 position = Vector2(0, 2)
