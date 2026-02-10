@@ -1,7 +1,5 @@
 extends Area2D
 
-@onready var animated_sprite_enemy: AnimatedSprite2D = $AnimatedSprite2D
-
 var cooldown: bool = false
 
 func _physics_process(_delta):
@@ -10,7 +8,7 @@ func _physics_process(_delta):
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var dist = global_position.distance_to(player.global_position)
-		if dist < 20 and player.has_method("take_damage"):
+		if dist < 10 and player.has_method("take_damage"):
 			cooldown = true
 			player.take_damage(1)
 			

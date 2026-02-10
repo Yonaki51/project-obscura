@@ -16,7 +16,6 @@ var vertical_velocity = 0.0
 
 func _process(delta: float):
 	if is_dead:
-		# Laat de enemy vallen
 		vertical_velocity += GRAVITY * delta
 		position.y += vertical_velocity * delta
 		return
