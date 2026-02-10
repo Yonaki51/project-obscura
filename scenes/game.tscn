@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://u61wbg78dchm"]
 
-[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="1_gee14"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cgr3hr4aoxcie" path="res://scenes/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="3_0tnpc"]
@@ -8,7 +8,7 @@
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="7_gee14"]
 [ext_resource type="FontFile" uid="uid://h565vdyf1t2l" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
-[ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="10_vtaks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
 atlas = ExtResource("3_0tnpc")
