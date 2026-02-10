@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://iyrn2lgn8hxt"]
+
+[ext_resource type="Script" uid="uid://72ypbcggqpwm" path="res://scripts/falling_platform.gd" id="1_eyv7q"]
+[ext_resource type="Texture2D" uid="uid://b6q15d5am7q55" path="res://assets/sprites/designed sprites/Ground_textures_with_platforms.png" id="1_l3rcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyv7q"]
+size = Vector2(24, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rehgp"]
+size = Vector2(24, 5)
+
+[node name="falling_platform" type="AnimatableBody2D" unique_id=559898849]
+script = ExtResource("1_eyv7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1573633459]
+texture_filter = 1
+texture = ExtResource("1_l3rcd")
+region_enabled = true
+region_rect = Rect2(67.97967, 59.813126, 24.164505, 9.321892)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2126402850]
+shape = SubResource("RectangleShape2D_eyv7q")
+one_way_collision = true
+
+[node name="Timer" type="Timer" parent="." unique_id=550955875]
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=765544518]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=799023177]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_rehgp")

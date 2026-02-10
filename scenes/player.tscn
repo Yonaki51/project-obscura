@@ -123,7 +123,7 @@ _data = {
 
 [node name="player" type="CharacterBody2D" unique_id=526401065 groups=["player"]]
 z_index = 5
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=820131508]
