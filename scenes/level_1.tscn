@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="4_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="5_e3sih"]
 [ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="6_pa8r4"]
-[ext_resource type="PackedScene" uid="uid://jx5sfhgjynkj" path="res://scenes/coconut.tscn" id="7_15mv3"]
+[ext_resource type="PackedScene" path="res://scenes/coconut.tscn" id="7_15mv3"]
+[ext_resource type="PackedScene" uid="uid://cy3a2u2j1iaku" path="res://scenes/platform_sand.tscn" id="8_15mv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3sih"]
 atlas = ExtResource("4_15mv3")
@@ -83,3 +84,9 @@ shape = SubResource("WorldBoundaryShape2D_pa8r4")
 
 [node name="Coconut" parent="Main" unique_id=1522227865 instance=ExtResource("7_15mv3")]
 position = Vector2(1, -256)
+
+[node name="platform_sand" parent="Main" unique_id=892978578 instance=ExtResource("8_15mv3")]
+position = Vector2(180, -102)
+
+[node name="platform_sand2" parent="Main" unique_id=2128558080 instance=ExtResource("8_15mv3")]
+position = Vector2(263, -104)
