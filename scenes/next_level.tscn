@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ubm12gfq5r0r"]
+
+[ext_resource type="Texture2D" uid="uid://b2r8nlaao7aai" path="res://assets/sprites/designed sprites/mangotrofee.png" id="1_rf0ph"]
+[ext_resource type="Script" uid="uid://dln0wjpweg2w1" path="res://scripts/next_level_area.gd" id="1_sd4vo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8fy2"]
+size = Vector2(223.74983, 236.99997)
+
+[node name="NextLevel" type="Node2D" unique_id=478093514]
+
+[node name="NextLevelArea" type="Area2D" parent="." unique_id=539143696]
+script = ExtResource("1_sd4vo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelArea" unique_id=1010436221]
+position = Vector2(-0.18749285, 0.14999962)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_e8fy2")
+
+[node name="Sprite2D" type="Sprite2D" parent="NextLevelArea" unique_id=1452400780]
+scale = Vector2(0.1, 0.097)
+texture = ExtResource("1_rf0ph")
+
+[connection signal="body_entered" from="NextLevelArea" to="NextLevelArea" method="_on_body_entered"]
