@@ -156,18 +156,20 @@ libraries/ = SubResource("AnimationLibrary_ur7pv")
 
 [node name="sfx_jump" type="AudioStreamPlayer2D" parent="." unique_id=25582099]
 stream = ExtResource("6_tuyoq")
-pitch_scale = 1.34
+volume_db = -3.493
 bus = &"SFX"
 
 [node name="sfx_swing" type="AudioStreamPlayer2D" parent="." unique_id=505335299]
 stream = ExtResource("7_fjrip")
+volume_db = -2.716
 bus = &"SFX"
 
 [node name="sfx_dash" type="AudioStreamPlayer2D" parent="." unique_id=625979409]
 stream = ExtResource("8_smehm")
+volume_db = -4.269
 bus = &"SFX"
 
 [node name="sfx_footstep" type="AudioStreamPlayer2D" parent="." unique_id=142619316]
 stream = ExtResource("9_ur7pv")
-volume_db = -3.88
+volume_db = -3.492
 bus = &"SFX"
