@@ -24,8 +24,8 @@ var dash_cooldown_timer = 0.0
 var dash_direction_x = 1
 var jumps_remaining = MAX_JUMPS
 
-var max_health: int = 10
-var current_health: int = 10
+var max_health: int = 8
+var current_health: int = 8
 var is_attacking = false
 
 var idle_timer: float = 0.0

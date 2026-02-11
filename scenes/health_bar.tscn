@@ -12,4 +12,5 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_y3kqx")
 centered = false
 vframes = 9
+frame = 8
 script = ExtResource("2_6opq1")
