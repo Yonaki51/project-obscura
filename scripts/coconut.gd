@@ -45,7 +45,6 @@ func _on_body_entered(body):
 		
 		# Check if player died
 		if body.current_health <= 0:
-			print("Player collision node: ", body.get_node_or_null("CollisionShape2D"))
 			print("You died!")
 			body.modulate = Color(0.81, 0.0, 0.186, 1.0)
 			Engine.time_scale = 0.5
