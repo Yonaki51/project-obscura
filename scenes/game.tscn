@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://u61wbg78dchm"]
 
-[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="1_gee14"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cgr3hr4aoxcie" path="res://scenes/platform.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="3_0tnpc"]
@@ -20,6 +20,19 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
 atlas = ExtResource("3_0tnpc")
 region = Rect2(8.667847, 13.251907, 1862.7582, 1013.18475)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+
+[sub_resource type="GDScript" id="GDScript_0tnpc"]
+script/source = "extends CollisionShape2D
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"player\"):
+		body.get_node(\"CollisionShape2D\").disabled = true
+	elif body.is_in_group(\"enemy\"):
+		body.get_node(\"CollisionShape2D\").disabled = true
+"
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 length = 0.001
@@ -59,54 +72,55 @@ _data = {
 &"move": SubResource("Animation_lbhrr")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
-
-[sub_resource type="GDScript" id="GDScript_0tnpc"]
-script/source = "extends CollisionShape2D
-
-
-func _on_body_entered(body: Node) -> void:
-	if body.is_in_group(\"player\"):
-		body.get_node(\"CollisionShape2D\").disabled = true
-	elif body.is_in_group(\"enemy\"):
-		body.get_node(\"CollisionShape2D\").disabled = true
-"
-
 [node name="game" type="Node2D" unique_id=1576081186]
 
-[node name="HealthBar" parent="." unique_id=1365556916 instance=ExtResource("10_vtaks")]
+[node name="Main" type="Node" parent="." unique_id=2011579504]
 
-[node name="GameManager" type="Node" parent="." unique_id=2116554109]
+[node name="HealthBar" parent="Main" unique_id=1365556916 instance=ExtResource("10_vtaks")]
+
+[node name="GameManager" type="Node" parent="Main" unique_id=926023301]
 unique_name_in_owner = true
 script = ExtResource("1_gee14")
 
-[node name="tilemaps" type="Node" parent="." unique_id=664631100]
+[node name="tilemaps" type="Node" parent="Main" unique_id=45337768]
 
-[node name="background" type="TileMapLayer" parent="tilemaps" unique_id=126019968]
+[node name="background" type="TileMapLayer" parent="Main/tilemaps" unique_id=1020056056]
 z_index = -1
 position = Vector2(-13, -9)
 tile_set = ExtResource("5_p57ef")
 
-[node name="Sprite2D" type="Sprite2D" parent="tilemaps/background" unique_id=1161048196]
+[node name="Sprite2D" type="Sprite2D" parent="Main/tilemaps/background" unique_id=1735263342]
 show_behind_parent = true
 position = Vector2(139.00002, -70.00001)
 scale = Vector2(0.25990322, 0.2591381)
 texture = SubResource("AtlasTexture_0tnpc")
 
-[node name="midground" type="TileMapLayer" parent="tilemaps" unique_id=1551911233]
+[node name="midground" type="TileMapLayer" parent="Main/tilemaps" unique_id=417845950]
 use_parent_material = true
 position = Vector2(-13, -9)
 tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAAAAgADAAAAAAABAAEAAgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAACAAAAAgAEAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAADAAAAAgADAAAAAAADAAEAAgAAAAAAAAADAAIAAgAAAAAAAAADAAMAAgAAAAAAAAAEAAAAAgADAAAAAAAEAAEAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAFAAIAAgAAAAAAAAAFAAMAAgAAAAAAAAAGAAAAAgAEAAAAAAAGAAEAAgAAAAAAAAAGAAIAAgAAAAAAAAAGAAMAAgAAAAAAAAAHAAAAAgADAAAAAAAHAAEAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAMAAgAAAAAAAAAIAAAAAgADAAAAAAAIAAEAAgAAAAAAAAAIAAIAAgAAAAAAAAAIAAMAAgAAAAAAAAAJAAAAAgAEAAAAAAAJAAEAAgAAAAAAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAAAAAAKAAAAAgADAAAAAAAKAAEAAgAAAAAAAAAKAAIAAgAAAAAAAAAKAAMAAgAAAAAAAAALAAAAAgAAAAAAAAALAAEAAgAAAAAAAAALAAIAAgAAAAAAAAALAAMAAgAAAAAAAAAMAAAAAgADAAAAAAAMAAEAAgAAAAAAAAAMAAIAAgAAAAAAAAAMAAMAAgAAAAAAAAANAAAAAgADAAAAAAANAAEAAgAAAAAAAAANAAIAAgAAAAAAAAANAAMAAgAAAAAAAAAOAAAAAgADAAAAAAAOAAEAAgAAAAAAAAAOAAIAAgAAAAAAAAAOAAMAAgAAAAAAAAAPAAAAAgADAAAAAAAPAAEAAgAAAAAAAAAPAAIAAgAAAAAAAAAPAAMAAgAAAAAAAAAQAAAAAgAAAAAAAAAQAAEAAgAAAAAAAAAQAAIAAgAAAAAAAAAQAAMAAgAAAAAAAAAAAP//AgADAAAAAAAFAP//AgADAAAAAAALAP//AgAEAAAAAAD9////AgADAAAAAAD6////AgADAAAAAAD3////AgADAAAAAAD+/wAAAgAEAAAAAAD9/wAAAgAAAAAAAAD8/wAAAgADAAAAAAD7/wAAAgAEAAAAAAD6/wEAAgAAAAAAAAD5/wEAAgAAAAAAAAD4/wEAAgAAAAAAAAD4/wAAAgADAAAAAAD3/wAAAgAAAAAAAAD5/wAAAgAEAAAAAAD3/wEAAgAAAAAAAAD3/wIAAgAAAAAAAAD4/wIAAgAAAAAAAAD5/wIAAgAAAAAAAAD6/wIAAgAAAAAAAAD6/wMAAgAAAAAAAAD7/wMAAgAAAAAAAAD8/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD//wMAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD9/wEAAgAAAAAAAAD8/wEAAgAAAAAAAAD7/wEAAgAAAAAAAAD7/wIAAgAAAAAAAAD8/wIAAgAAAAAAAAD9/wIAAgAAAAAAAAD+/wIAAgAAAAAAAAD5/wMAAgAAAAAAAAD4/wMAAgAAAAAAAAD3/wMAAgAAAAAAAAD6/wAAAgAAAAAAAAAQAP//AgADAAAAAAD//wAAAgADAAAAAAD2/wEAAgAAAAEAAAD2/wIAAgAAAAEAAAD2/wMAAgAAAAEAAAD1/wMAAgAAAAEAAAD0/wMAAgAAAAEAAADz/wMAAgAAAAEAAADy/wMAAgAAAAEAAADx/wMAAgAAAAEAAADw/wMAAgAAAAEAAADv/wMAAgAAAAEAAADv/wIAAgAAAAEAAADv/wEAAgAAAAEAAADw/wEAAgAAAAEAAADx/wEAAgAAAAEAAADy/wEAAgAAAAEAAADz/wEAAgAAAAEAAAD0/wEAAgAAAAEAAAD1/wEAAgAAAAEAAAD1/wIAAgAAAAEAAAD0/wIAAgAAAAEAAADz/wIAAgAAAAEAAADy/wIAAgAAAAEAAADx/wIAAgAAAAEAAADw/wIAAgAAAAEAAAD2/wAAAgAEAAEAAAD1/wAAAgAEAAEAAAD0/wAAAgADAAEAAADy/wAAAgAEAAEAAADx/wAAAgAEAAEAAADz/wAAAgADAAEAAADv/wAAAgADAAEAAADw/wAAAgADAAEAAADv//3/AgABAAEAAADw//3/AgADAAEAAADx//3/AgAEAAEAAADy//3/AgACAAEAAADu/wEAAgAAAAIAAADt/wEAAgAAAAIAAADs/wEAAgAAAAIAAADr/wEAAgAAAAIAAADq/wEAAgAAAAIAAADp/wEAAgAAAAIAAADo/wEAAgAAAAIAAADn/wEAAgAAAAIAAADn/wIAAgAAAAIAAADn/wMAAgAAAAIAAADo/wMAAgAAAAIAAADp/wMAAgAAAAIAAADq/wMAAgAAAAIAAADr/wMAAgAAAAIAAADs/wMAAgAAAAIAAADt/wMAAgAAAAIAAADu/wMAAgAAAAIAAADu/wIAAgAAAAIAAADt/wIAAgAAAAIAAADs/wIAAgAAAAIAAADr/wIAAgAAAAIAAADq/wIAAgAAAAIAAADp/wIAAgAAAAIAAADo/wIAAgAAAAIAAADn/wAAAgABAAIAAADo/wAAAgAEAAIAAADp/wAAAgADAAIAAADq/wAAAgADAAIAAADs/wAAAgADAAIAAADu/wAAAgADAAIAAADt/wAAAgAEAAIAAADr/wAAAgAEAAIAAADp//3/AgABAAIAAADs//3/AgACAAIAAADq//3/AgADAAIAAADr//3/AgAEAAIAAADv//v/AgACAAMAAADw//v/AgADAAMAAADx//v/AgAEAAMAAAD2//z/AgACAAMAAAD3//z/AgADAAMAAAD4//z/AgAEAAMAAADz//j/AgACAAMAAAD0//j/AgADAAMAAAD1//j/AgAEAAMAAAA=")
 tile_set = ExtResource("5_p57ef")
 
-[node name="player" parent="." unique_id=526401065 instance=ExtResource("1_uwrxv")]
+[node name="player" parent="Main" unique_id=526401065 instance=ExtResource("1_uwrxv")]
 position = Vector2(-7, -25)
 
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=1105954271]
+[node name="Camera2D" type="Camera2D" parent="Main/player" unique_id=1352828110]
 zoom = Vector2(4, 4)
 limit_bottom = 110
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="killbox" parent="Main" unique_id=1386055676 instance=ExtResource("5_iywne")]
+z_index = 1
+position = Vector2(300, 103)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/killbox" unique_id=635121046]
+position = Vector2(-266, -12)
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+script = SubResource("GDScript_0tnpc")
+
+[node name="Coconut" parent="Main" unique_id=1522227865 instance=ExtResource("16_ca42v")]
+position = Vector2(1, -256)
 
 [node name="platforms" type="Node" parent="." unique_id=421955639]
 
@@ -154,15 +168,3 @@ position = Vector2(35, -6)
 
 [node name="enemy3" parent="Enemies" unique_id=1667306573 instance=ExtResource("10_dinhu")]
 position = Vector2(123, -6)
-
-[node name="killbox" parent="." unique_id=1386055676 instance=ExtResource("5_iywne")]
-z_index = 1
-position = Vector2(300, 103)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox" unique_id=2069200937]
-position = Vector2(-266, -12)
-shape = SubResource("WorldBoundaryShape2D_p57ef")
-script = SubResource("GDScript_0tnpc")
-
-[node name="Coconut" parent="." unique_id=1522227865 instance=ExtResource("16_ca42v")]
-position = Vector2(1, -256)
