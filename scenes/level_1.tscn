@@ -48,7 +48,7 @@ tile_set = ExtResource("3_pa8r4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Main/tilemaps/background" unique_id=1479374454]
 show_behind_parent = true
-position = Vector2(139.00002, -70.00001)
+position = Vector2(114, -96)
 scale = Vector2(0.25990322, 0.2591381)
 texture = SubResource("AtlasTexture_e3sih")
 
