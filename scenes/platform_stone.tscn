@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dpiqcrgs2spod"]
+
+[ext_resource type="Texture2D" uid="uid://rc4mraeej5fb" path="res://assets/sprites/designed sprites/Ground And platoforms Correct placement.png" id="1_wrvho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba0x2"]
+atlas = ExtResource("1_wrvho")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(48, 12)
+
+[node name="platform_stone" type="AnimatableBody2D" unique_id=892978578]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=549331313]
+texture = SubResource("AtlasTexture_ba0x2")
+region_enabled = true
+region_rect = Rect2(50.913963, 64.9195, 48.068146, 12.213448)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=479882917]
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true
