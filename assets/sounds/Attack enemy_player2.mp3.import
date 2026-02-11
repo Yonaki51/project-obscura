@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Attack enemy_player2.mp3-47d92cccc52e3b6822d0
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
-beat_count=0
+loop_offset=0.0
+bpm=400.0
+beat_count=1
 bar_beats=4

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="2_7nbyq"]
 [ext_resource type="Texture2D" uid="uid://d1fanvm85jh3y" path="res://assets/sprites/designed sprites/game_startscherm_knoppen_ingedrukt.png" id="2_q30ww"]
 [ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/button.gd" id="3_7nbyq"]
+[ext_resource type="AudioStream" uid="uid://bmrjluw1bb2u1" path="res://assets/sounds/Button_02.mp3" id="6_4ge0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6g0no"]
 atlas = ExtResource("2_7nbyq")
@@ -62,6 +63,11 @@ texture_pressed = SubResource("AtlasTexture_g1ylw")
 stretch_mode = 5
 script = ExtResource("3_7nbyq")
 
+[node name="button_click_start" type="AudioStreamPlayer2D" parent="Control/Start_Button" unique_id=1259779456]
+position = Vector2(-323, -195)
+stream = ExtResource("6_4ge0g")
+volume_db = 9.701
+
 [node name="Exit_Button" type="TextureButton" parent="Control" unique_id=2076623626]
 layout_mode = 0
 offset_left = 327.0
@@ -72,6 +78,11 @@ texture_normal = SubResource("AtlasTexture_7nbyq")
 texture_pressed = SubResource("AtlasTexture_6ta5r")
 stretch_mode = 5
 script = ExtResource("3_7nbyq")
+
+[node name="button_click_exit" type="AudioStreamPlayer2D" parent="Control/Exit_Button" unique_id=1510340097]
+position = Vector2(-650, -684)
+stream = ExtResource("6_4ge0g")
+volume_db = 0.776
 
 [connection signal="mouse_entered" from="Control/Start_Button" to="Control/Start_Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Control/Start_Button" to="Control/Start_Button" method="_on_mouse_exited"]

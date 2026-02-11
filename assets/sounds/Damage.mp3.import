@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Damage.mp3-c0327c62b90ab8657a13b5653063be95.m
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
-beat_count=0
+loop_offset=0.0
+bpm=350.0
+beat_count=1
 bar_beats=4

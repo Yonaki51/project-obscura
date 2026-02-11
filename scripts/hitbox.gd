@@ -1,7 +1,10 @@
 extends Area2D
 
-var cooldown: bool = false
 @onready var player: CharacterBody2D = $"../../../player"
+@onready var sfx_swing_enemy: AudioStreamPlayer2D = $"../sfx_swing_enemy"
+@onready var sfx_player_get_damage: AudioStreamPlayer2D = $sfx_player_get_damage
+
+var cooldown: bool = false
 
 func _physics_process(_delta):
 	if cooldown:
@@ -10,10 +13,14 @@ func _physics_process(_delta):
 	if player:
 		var dist = global_position.distance_to(player.global_position)
 		if dist < 20 and player.has_method("take_damage"):
-
 			cooldown = true
 			player.take_damage(1)
 			player.modulate = Color(1.0, 0.311, 0.354, 1.0)
+			
+			# Player gets damage sound
+			if sfx_player_get_damage:
+				$sfx_player_get_damage.pitch_scale = randf_range(0.9, 1.0)
+				sfx_player_get_damage.play()
 			
 			if player.current_health <= 0:
 				print("You died!")

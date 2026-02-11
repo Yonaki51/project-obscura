@@ -14,6 +14,9 @@ const MAX_JUMPS = 1
 @onready var attack_collision: CollisionShape2D = $Attack/attackCollisionPlayer
 @onready var attack_original_position = attack.position
 @onready var health_bar: Sprite2D = $"../HealthBar/Sprite2D"
+@onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
+@onready var sfx_dash: AudioStreamPlayer2D = $sfx_dash
+@onready var sfx_footstep: AudioStreamPlayer2D = $sfx_footstep
 
 var is_dashing = false
 var dash_timer = 0.0
@@ -71,6 +74,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and jumps_remaining > 0 and not is_dashing:
 		velocity.y = JUMP_VELOCITY
 		jumps_remaining -= 1
+		
+		# Random pitch jump
+		$sfx_jump.pitch_scale = randf_range(0.9, 1.1)
+		sfx_jump.play()
 	
 	# Reset jumps when on floor
 	if is_on_floor():
@@ -86,6 +93,9 @@ func _physics_process(delta: float) -> void:
 			dash_direction_x = 1 if direction > 0 else -1
 		is_dashing = true
 		dash_timer = DASH_DURATION
+		# Dash play sound pitch scale
+		$sfx_dash.pitch_scale = randf_range(0.8, 1.2)
+		sfx_dash.play()
 	
 	# Flip the sprite
 	if not is_dashing:
@@ -104,10 +114,20 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("idle")
+			# Stops walking while idle
+			if sfx_footstep and sfx_footstep.playing:
+				sfx_footstep.stop()
 		else:
 			animated_sprite.play("run")
+			# play walking 
+			if sfx_footstep and not sfx_footstep.playing:
+				sfx_footstep.pitch_scale = randf_range(0.8, 1.2)  # Variatie
+				sfx_footstep.play()
 	else:
 		animated_sprite.play("jump")
+		# Stops walking when in air
+		if sfx_footstep and sfx_footstep.playing:
+			sfx_footstep.stop()
 		
 	
 	# Apply movement

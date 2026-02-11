@@ -1,6 +1,9 @@
 extends Area2D
 
+@onready var sfx_player_get_damage: AudioStreamPlayer2D = $sfx_player_get_damage
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
+@onready var sfx_coconut_player: AudioStreamPlayer2D = $sfx_coconut_player
+
 var fall_speed: float = 0
 var fall_gravity: float = 500
 var is_falling: bool = false
@@ -32,6 +35,12 @@ func _on_body_entered(body):
 	if body.is_in_group("player") and body.has_method("take_damage"):
 		body.take_damage(1)
 		body.modulate = Color(1.0, 0.311, 0.354, 1.0)
+		
+		# coconut sound
+		if sfx_player_get_damage:
+				sfx_player_get_damage.play()
+				$sfx_coconut_player.pitch_scale = randf_range(0.8, 1.1)
+				sfx_coconut_player.play()
 		reset_coconut()
 		
 		# Check if player died

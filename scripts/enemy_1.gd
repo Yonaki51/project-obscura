@@ -7,6 +7,7 @@ const GRAVITY = 300  # Pixels per seconde², pas aan naar smaak
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var ray_cast_down: RayCast2D = $RayCastDown
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx_enemy_damage: AudioStreamPlayer2D = $sfx_enemy_damage
 
 @export var health: int = 20
 
@@ -34,6 +35,12 @@ func _process(delta: float):
 
 func handle_hit(damage: int):
 	health -= damage
+	
+	#Enemy damage sound high
+	if sfx_enemy_damage:
+				$sfx_enemy_damage.pitch_scale = randf_range(1.8, 1.5)
+				sfx_enemy_damage.play()
+				
 	modulate = Color(1.0, 0.42, 0.433, 1.0)
 	await get_tree().create_timer(0.3).timeout
 	modulate = Color(1, 1, 1)

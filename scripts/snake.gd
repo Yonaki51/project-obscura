@@ -2,6 +2,7 @@ extends Area2D
 
 var damage_active: bool = false
 @onready var player: CharacterBody2D = $"../../../player"
+@onready var sfx_player_get_damage: AudioStreamPlayer2D = $sfx_player_get_damage
 
 func _physics_process(_delta):
 	var player = get_tree().get_first_node_in_group("player")
@@ -23,6 +24,10 @@ func _damage_loop(player):
 		
 		player.take_damage(1)
 		player.modulate = Color(1.0, 0.311, 0.354, 1.0)
+		
+		# Player get damage sound
+		if sfx_player_get_damage:
+			sfx_player_get_damage.play()
 		
 		if player.current_health <= 0:
 			print("You died!")

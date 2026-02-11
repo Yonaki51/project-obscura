@@ -21,7 +21,7 @@ buses/default_bus_layout="uid://bcpfa5j02vgc4"
 
 [autoload]
 
-Music="*uid://6l4k8mnieold"
+Music="uid://6l4k8mnieold"
 
 [display]
 

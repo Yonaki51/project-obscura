@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/coconut].mp3-d508becf8b8c5d11f1cbc05aba790f19
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
-beat_count=0
+loop_offset=0.0
+bpm=320.0
+beat_count=1
 bar_beats=4

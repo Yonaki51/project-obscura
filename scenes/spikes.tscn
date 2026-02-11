@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwdcyitxxvgn5" path="res://obstacles_hitbox.gd" id="1_5pg7g"]
 [ext_resource type="Texture2D" uid="uid://dha118acup2rw" path="res://assets/sprites/designed sprites/spikes.png" id="1_bflj7"]
 [ext_resource type="PackedScene" uid="uid://dcpg2c7qtxg8o" path="res://scenes/hitbox.tscn" id="1_xbcdo"]
+[ext_resource type="AudioStream" uid="uid://birjxpo73054j" path="res://assets/sounds/Damage.mp3" id="4_kd5gq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bflj7"]
 size = Vector2(14, 6)
@@ -55,3 +56,7 @@ libraries/ = SubResource("AnimationLibrary_fbh7e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox3" unique_id=1575024525]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_yfefq")
+
+[node name="sfx_player_get_damage" type="AudioStreamPlayer2D" parent="hitbox3" unique_id=1014588611]
+stream = ExtResource("4_kd5gq")
+bus = &"SFX"

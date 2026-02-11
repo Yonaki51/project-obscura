@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dn3lojifqdyyk" path="res://scripts/coconut.gd" id="1_11530"]
 [ext_resource type="Texture2D" uid="uid://61jumkoj07we" path="res://assets/sprites/designed sprites/Coconut.png" id="1_qfs6l"]
+[ext_resource type="AudioStream" uid="uid://birjxpo73054j" path="res://assets/sounds/Damage.mp3" id="3_qfs6l"]
+[ext_resource type="AudioStream" uid="uid://bpsbyag1wrn87" path="res://assets/sounds/coconut].mp3" id="4_11530"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuosx"]
 size = Vector2(8, 8)
@@ -22,6 +24,7 @@ animations = [{
 }]
 
 [node name="Coconut" type="Area2D" unique_id=1522227865]
+z_index = 1
 script = ExtResource("1_11530")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1196473178]
@@ -32,3 +35,11 @@ shape = SubResource("RectangleShape2D_wuosx")
 position = Vector2(-4.7683716e-07, -3.9999998)
 scale = Vector2(0.3240741, 0.28180352)
 sprite_frames = SubResource("SpriteFrames_m53wd")
+
+[node name="sfx_player_get_damage" type="AudioStreamPlayer2D" parent="." unique_id=1303717528]
+stream = ExtResource("3_qfs6l")
+bus = &"SFX"
+
+[node name="sfx_coconut_player" type="AudioStreamPlayer2D" parent="." unique_id=1459305924]
+stream = ExtResource("4_11530")
+bus = &"SFX"
