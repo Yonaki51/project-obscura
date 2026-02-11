@@ -45,10 +45,11 @@ func _on_body_entered(body):
 		
 		# Check if player died
 		if body.current_health <= 0:
+			print("Player collision node: ", body.get_node_or_null("CollisionShape2D"))
 			print("You died!")
 			body.modulate = Color(0.81, 0.0, 0.186, 1.0)
 			Engine.time_scale = 0.5
-			body.get_node("CollisionShape2D").disabled = true
+			body.get_node("CollisionShape2D").set_deferred("disabled", true)
 			get_tree().create_timer(1.0).timeout.connect(func():
 				Engine.time_scale = 1
 				get_tree().reload_current_scene()
