@@ -27,7 +27,7 @@ func _on_body_entered(body: Node) -> void:
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pa8r4"]
 normal = Vector2(1, 0)
-distance = 93.0
+distance = -41.0
 
 [node name="Level1" type="Node2D" unique_id=1462080653]
 
@@ -76,10 +76,9 @@ position = Vector2(-266, -12)
 shape = SubResource("WorldBoundaryShape2D_2y5yt")
 script = SubResource("GDScript_2os1m")
 
-[node name="killbox left" type="Area2D" parent="Main" unique_id=1904979568]
+[node name="killbox2" parent="Main" unique_id=1774066652 instance=ExtResource("6_pa8r4")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/killbox left" unique_id=679309097]
-position = Vector2(-166, 86)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/killbox2" unique_id=1454693104]
 shape = SubResource("WorldBoundaryShape2D_pa8r4")
 
 [node name="Coconut" parent="Main" unique_id=1522227865 instance=ExtResource("7_15mv3")]
