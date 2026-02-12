@@ -1,18 +1,19 @@
 [gd_scene format=4 uid="uid://becrlvuma6opa"]
 
 [ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="1_4nkto"]
-[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="2_fcfvj"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="2_fcfvj"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="3_pa8r4"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="4_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="5_e3sih"]
 [ext_resource type="PackedScene" uid="uid://ubm12gfq5r0r" path="res://scenes/next_level.tscn" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="6_pa8r4"]
-[ext_resource type="PackedScene" path="res://scenes/coconut.tscn" id="7_15mv3"]
+[ext_resource type="PackedScene" uid="uid://jx5sfhgjynkj" path="res://scenes/coconut.tscn" id="7_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cy3a2u2j1iaku" path="res://scenes/platform_sand.tscn" id="8_15mv3"]
 [ext_resource type="Texture2D" uid="uid://b11fp76o36xrh" path="res://assets/sprites/designed sprites/lucht1.png" id="9_2y5yt"]
 [ext_resource type="Texture2D" uid="uid://cfxfww5vr6h0u" path="res://assets/sprites/designed sprites/achtergrond1_zonder_zon 1.png" id="10_2os1m"]
 [ext_resource type="PackedScene" uid="uid://d1xvtemgccc6q" path="res://scenes/enemy_1.tscn" id="10_go7sj"]
 [ext_resource type="PackedScene" uid="uid://iyrn2lgn8hxt" path="res://scenes/falling_platform.tscn" id="12_go7sj"]
+[ext_resource type="AudioStream" uid="uid://ce82ep78oi3wo" path="res://assets/music/Normal_level_Tropical.mp3" id="14_2aecg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3sih"]
 atlas = ExtResource("4_15mv3")
@@ -74,6 +75,10 @@ _data = {
 }
 
 [node name="Level1" type="Node2D" unique_id=1462080653]
+
+[node name="NormalLevelTropical" type="AudioStreamPlayer" parent="." unique_id=708354477]
+stream = ExtResource("14_2aecg")
+autoplay = true
 
 [node name="Main" type="Node" parent="." unique_id=311803447]
 

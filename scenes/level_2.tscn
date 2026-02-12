@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://cfbws31bxiphs"]
 
+[ext_resource type="AudioStream" uid="uid://ce82ep78oi3wo" path="res://assets/music/Normal_level_Tropical.mp3" id="1_1sb0y"]
 [ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="1_y0kc7"]
-[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="2_ne2mo"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="2_ne2mo"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="3_6cvei"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="4_que50"]
 [ext_resource type="Texture2D" uid="uid://cfxfww5vr6h0u" path="res://assets/sprites/designed sprites/achtergrond1_zonder_zon 1.png" id="5_6cvei"]
@@ -18,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bhwmhhgq8fgjb" path="res://scenes/enemy_2.tscn" id="13_guvtl"]
 [ext_resource type="PackedScene" uid="uid://dp2iwijpg0wn6" path="res://scenes/enemy_3.tscn" id="14_igmy8"]
 [ext_resource type="PackedScene" uid="uid://bvlsp4ic8c1ni" path="res://scenes/killbox.tscn" id="15_vhnap"]
-[ext_resource type="PackedScene" path="res://scenes/coconut.tscn" id="16_vwfin"]
+[ext_resource type="PackedScene" uid="uid://jx5sfhgjynkj" path="res://scenes/coconut.tscn" id="16_vwfin"]
 [ext_resource type="PackedScene" uid="uid://cgr3hr4aoxcie" path="res://scenes/platform.tscn" id="17_7qsfm"]
 [ext_resource type="Texture2D" uid="uid://bf3mofhygy4dd" path="res://assets/sprites/designed sprites/lucht2.png" id="20_k22d5"]
 
@@ -48,6 +49,10 @@ normal = Vector2(-0.9999099, 0.013421609)
 distance = -5421.3438
 
 [node name="level2" type="Node2D" unique_id=1516787792]
+
+[node name="NormalLevelTropical" type="AudioStreamPlayer" parent="." unique_id=200700336]
+stream = ExtResource("1_1sb0y")
+autoplay = true
 
 [node name="Main" type="Node" parent="." unique_id=944513889]
 

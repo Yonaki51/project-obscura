@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://bp5g5hs2esyfy"]
 
 [ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="1_x7blo"]
-[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="2_qsmat"]
+[ext_resource type="AudioStream" uid="uid://bjmali000ypsk" path="res://assets/music/Thunder_Rain_Tropical.mp3" id="1_y88yj"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="2_qsmat"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="3_yk4f3"]
 [ext_resource type="Texture2D" uid="uid://cfgfatee7xpxe" path="res://assets/sprites/designed sprites/achtergrond2_zonder_maan 1.png" id="4_cp0rv"]
 [ext_resource type="Texture2D" uid="uid://8vhga03rigne" path="res://assets/sprites/designed sprites/achtergrond3 met maan en storm.png" id="5_py6g0"]
@@ -16,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cxwvsov82tplk" path="res://assets/sprites/designed sprites/achtergrond3_zonder_maan 1.png" id="13_hy5x3"]
 [ext_resource type="PackedScene" uid="uid://bhwmhhgq8fgjb" path="res://scenes/enemy_2.tscn" id="14_y88yj"]
 [ext_resource type="PackedScene" uid="uid://dp2iwijpg0wn6" path="res://scenes/enemy_3.tscn" id="15_675ay"]
-[ext_resource type="PackedScene" path="res://scenes/next_level.tscn" id="17_q41qf"]
+[ext_resource type="PackedScene" uid="uid://ubm12gfq5r0r" path="res://scenes/next_level.tscn" id="17_q41qf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g31h8"]
 
@@ -36,6 +37,10 @@ normal = Vector2(1, 0)
 distance = -41.0
 
 [node name="level 4" type="Node2D" unique_id=746225807]
+
+[node name="ThunderRainTropical" type="AudioStreamPlayer" parent="." unique_id=1434500725]
+stream = ExtResource("1_y88yj")
+autoplay = true
 
 [node name="Main" type="Node" parent="." unique_id=1932061293]
 

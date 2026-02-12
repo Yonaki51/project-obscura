@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://b2btn5mvduyel"]
 
+[ext_resource type="AudioStream" uid="uid://dyw767fnvyxe4" path="res://assets/music/Night_Tropical.mp3" id="1_8uepa"]
 [ext_resource type="PackedScene" uid="uid://ubm12gfq5r0r" path="res://scenes/next_level.tscn" id="1_ema3p"]
 [ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="1_ha73p"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="2_vcx5n"]
@@ -36,6 +37,10 @@ normal = Vector2(1, 0)
 distance = -41.0
 
 [node name="level 3" type="Node2D" unique_id=2143286860]
+
+[node name="NightTropical" type="AudioStreamPlayer" parent="." unique_id=1665215648]
+stream = ExtResource("1_8uepa")
+autoplay = true
 
 [node name="Main" type="Node" parent="." unique_id=308912053]
 

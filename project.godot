@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://bcpfa5j02vgc4"
 
-[autoload]
-
-Music="uid://6l4k8mnieold"
-
 [display]
 
 window/size/viewport_width=1920
