@@ -667,3 +667,6 @@ position = Vector2(2783, -681)
 [node name="NextLevel" parent="Main" unique_id=478093514 instance=ExtResource("8_bv48q")]
 z_index = 1
 position = Vector2(4954, -645)
+
+[node name="falling_platform" parent="Main" unique_id=938969676 instance=ExtResource("7_wdtqu")]
+position = Vector2(1071, -87)
