@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://jil60yskce2n"]
+
+[ext_resource type="Script" uid="uid://bkusqepyxwokm" path="res://scenes/loser.gd" id="1_3hgy6"]
+[ext_resource type="Texture2D" uid="uid://snwl3734ckmp" path="res://assets/sprites/designed sprites/tekst_eindscherm.png" id="1_yhdq8"]
+[ext_resource type="Texture2D" uid="uid://bc0dbvhwil6du" path="res://assets/sprites/designed sprites/game_startscherm_knoppen.png" id="2_3hgy6"]
+[ext_resource type="Texture2D" uid="uid://d1fanvm85jh3y" path="res://assets/sprites/designed sprites/game_startscherm_knoppen_ingedrukt.png" id="3_ckk7k"]
+[ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/button.gd" id="4_f6vr4"]
+[ext_resource type="AudioStream" uid="uid://bmrjluw1bb2u1" path="res://assets/sounds/Button_02.mp3" id="5_hg4ij"]
+
+[sub_resource type="Gradient" id="Gradient_wcwf6"]
+colors = PackedColorArray(0, 0.06100855, 0.09985284, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p57yf"]
+gradient = SubResource("Gradient_wcwf6")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi6ts"]
+atlas = ExtResource("2_3hgy6")
+region = Rect2(3.0476894, 25.089642, 32.080765, 15.190563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ajwl"]
+atlas = ExtResource("3_ckk7k")
+region = Rect2(2.9414625, 25.939463, 32.505672, 14.23451)
+
+[node name="Loser" type="Node2D" unique_id=1892372997]
+script = ExtResource("1_3hgy6")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1663651388]
+position = Vector2(1055, 729)
+scale = Vector2(33.34375, 22.34375)
+texture = SubResource("GradientTexture2D_p57yf")
+
+[node name="TekstEindscherm" type="Sprite2D" parent="." unique_id=933915099]
+position = Vector2(551, 443)
+rotation = -0.0022826493
+scale = Vector2(20.903847, 18.328571)
+texture = ExtResource("1_yhdq8")
+region_enabled = true
+region_rect = Rect2(30.072334, 37.789715, 50.977974, 14.520618)
+
+[node name="Exit_Button" type="TextureButton" parent="." unique_id=262672887]
+offset_left = 286.0
+offset_top = 714.0
+offset_right = 706.0
+offset_bottom = 864.0
+texture_normal = SubResource("AtlasTexture_hi6ts")
+texture_pressed = SubResource("AtlasTexture_1ajwl")
+stretch_mode = 5
+script = ExtResource("4_f6vr4")
+
+[node name="button_click_exit" type="AudioStreamPlayer2D" parent="Exit_Button" unique_id=2099980509]
+position = Vector2(-650, -684)
+stream = ExtResource("5_hg4ij")
+volume_db = 0.776
+
+[connection signal="pressed" from="Exit_Button" to="." method="_on_exit_button_pressed"]

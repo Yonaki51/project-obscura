@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dbhge6rif6axr"]
+
+[ext_resource type="Script" uid="uid://cfrcor88dgbrj" path="res://scenes/level_5.gd" id="1_ak5vt"]
+[ext_resource type="Texture2D" uid="uid://snwl3734ckmp" path="res://assets/sprites/designed sprites/tekst_eindscherm.png" id="1_w2wna"]
+[ext_resource type="Texture2D" uid="uid://b2r8nlaao7aai" path="res://assets/sprites/designed sprites/mangotrofee.png" id="2_e224s"]
+[ext_resource type="Texture2D" uid="uid://bc0dbvhwil6du" path="res://assets/sprites/designed sprites/game_startscherm_knoppen.png" id="4_ij176"]
+[ext_resource type="Texture2D" uid="uid://d1fanvm85jh3y" path="res://assets/sprites/designed sprites/game_startscherm_knoppen_ingedrukt.png" id="5_uva14"]
+[ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/button.gd" id="6_vqwqk"]
+[ext_resource type="AudioStream" uid="uid://bmrjluw1bb2u1" path="res://assets/sounds/Button_02.mp3" id="7_1q3ip"]
+
+[sub_resource type="Gradient" id="Gradient_wcwf6"]
+colors = PackedColorArray(0, 0.06100855, 0.09985284, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tbt7t"]
+gradient = SubResource("Gradient_wcwf6")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4ab4"]
+atlas = ExtResource("4_ij176")
+region = Rect2(3.0476894, 25.089642, 32.080765, 15.190563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxvx7"]
+atlas = ExtResource("5_uva14")
+region = Rect2(2.9414625, 25.939463, 32.505672, 14.23451)
+
+[node name="level_5" type="Node2D" unique_id=1192308465]
+script = ExtResource("1_ak5vt")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=983216569]
+position = Vector2(1055, 729)
+scale = Vector2(33.34375, 22.34375)
+texture = SubResource("GradientTexture2D_tbt7t")
+
+[node name="TekstEindscherm" type="Sprite2D" parent="." unique_id=700945917]
+position = Vector2(541, 536)
+scale = Vector2(20.903847, 18.328571)
+texture = ExtResource("1_w2wna")
+region_enabled = true
+region_rect = Rect2(28.763609, 2.938825, 52.16205, 35.17333)
+
+[node name="Mangotrofee" type="Sprite2D" parent="." unique_id=486952748]
+position = Vector2(518.00006, 188)
+scale = Vector2(1.0950228, 1.1092438)
+texture = ExtResource("2_e224s")
+
+[node name="Exit_Button" type="TextureButton" parent="Mangotrofee" unique_id=244127254]
+offset_left = -210.95456
+offset_top = 470.5909
+offset_right = 209.04544
+offset_bottom = 620.5909
+texture_normal = SubResource("AtlasTexture_e4ab4")
+texture_pressed = SubResource("AtlasTexture_xxvx7")
+stretch_mode = 5
+script = ExtResource("6_vqwqk")
+
+[node name="button_click_exit" type="AudioStreamPlayer2D" parent="Mangotrofee/Exit_Button" unique_id=573564369]
+position = Vector2(-650, -684)
+stream = ExtResource("7_1q3ip")
+volume_db = 0.776
+
+[connection signal="pressed" from="Mangotrofee/Exit_Button" to="." method="_on_exit_button_pressed"]
