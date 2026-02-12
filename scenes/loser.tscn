@@ -25,12 +25,12 @@ region = Rect2(2.9414625, 25.939463, 32.505672, 14.23451)
 script = ExtResource("1_3hgy6")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1663651388]
-position = Vector2(1055, 729)
+position = Vector2(1055, 717.00006)
 scale = Vector2(33.34375, 22.34375)
 texture = SubResource("GradientTexture2D_p57yf")
 
 [node name="TekstEindscherm" type="Sprite2D" parent="." unique_id=933915099]
-position = Vector2(551, 443)
+position = Vector2(1015.8877, 443)
 rotation = -0.0022826493
 scale = Vector2(20.903847, 18.328571)
 texture = ExtResource("1_yhdq8")
@@ -38,9 +38,9 @@ region_enabled = true
 region_rect = Rect2(30.072334, 37.789715, 50.977974, 14.520618)
 
 [node name="Exit_Button" type="TextureButton" parent="." unique_id=262672887]
-offset_left = 286.0
+offset_left = 750.88763
 offset_top = 714.0
-offset_right = 706.0
+offset_right = 1170.8877
 offset_bottom = 864.0
 texture_normal = SubResource("AtlasTexture_hi6ts")
 texture_pressed = SubResource("AtlasTexture_1ajwl")
