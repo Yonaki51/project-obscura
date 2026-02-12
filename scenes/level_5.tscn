@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbhge6rif6axr"]
 
-[ext_resource type="Script" uid="uid://cfrcor88dgbrj" path="res://scenes/level_5.gd" id="1_ak5vt"]
+[ext_resource type="Script" uid="uid://cfrcor88dgbrj" path="res://scripts/level_5.gd" id="1_ak5vt"]
 [ext_resource type="Texture2D" uid="uid://snwl3734ckmp" path="res://assets/sprites/designed sprites/tekst_eindscherm.png" id="1_w2wna"]
 [ext_resource type="Texture2D" uid="uid://b2r8nlaao7aai" path="res://assets/sprites/designed sprites/mangotrofee.png" id="2_e224s"]
 [ext_resource type="Texture2D" uid="uid://bc0dbvhwil6du" path="res://assets/sprites/designed sprites/game_startscherm_knoppen.png" id="4_ij176"]
@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://bwoya8ap7i6qh" path="res://scripts/button.gd" id="6_vqwqk"]
 [ext_resource type="AudioStream" uid="uid://bmrjluw1bb2u1" path="res://assets/sounds/Button_02.mp3" id="7_1q3ip"]
 
-[sub_resource type="Gradient" id="Gradient_wcwf6"]
+[sub_resource type="Gradient" id="Gradient_ak5vt"]
 colors = PackedColorArray(0, 0.06100855, 0.09985284, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tbt7t"]
-gradient = SubResource("Gradient_wcwf6")
+gradient = SubResource("Gradient_ak5vt")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4ab4"]
 atlas = ExtResource("4_ij176")

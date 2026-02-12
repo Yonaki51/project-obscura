@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jil60yskce2n"]
 
-[ext_resource type="Script" uid="uid://bkusqepyxwokm" path="res://scenes/loser.gd" id="1_3hgy6"]
+[ext_resource type="Script" uid="uid://bkusqepyxwokm" path="res://scripts/loser.gd" id="1_3hgy6"]
 [ext_resource type="Texture2D" uid="uid://snwl3734ckmp" path="res://assets/sprites/designed sprites/tekst_eindscherm.png" id="1_yhdq8"]
 [ext_resource type="Texture2D" uid="uid://bc0dbvhwil6du" path="res://assets/sprites/designed sprites/game_startscherm_knoppen.png" id="2_3hgy6"]
 [ext_resource type="Texture2D" uid="uid://d1fanvm85jh3y" path="res://assets/sprites/designed sprites/game_startscherm_knoppen_ingedrukt.png" id="3_ckk7k"]
