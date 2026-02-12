@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://becrlvuma6opa"]
 
 [ext_resource type="PackedScene" uid="uid://dhxyra3eb5p12" path="res://scenes/health_bar.tscn" id="1_4nkto"]
-[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="2_fcfvj"]
+[ext_resource type="Script" uid="uid://cwv2mq2qkfq1n" path="res://scripts/gamemanager.gd" id="2_fcfvj"]
 [ext_resource type="TileSet" uid="uid://du1ugfw6dcmvc" path="res://scenes/new_tile_set.tres" id="3_pa8r4"]
 [ext_resource type="Texture2D" uid="uid://bsgvl6w20anw6" path="res://assets/sprites/designed sprites/preview.png" id="4_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cbtvsd6ncchnu" path="res://scenes/player.tscn" id="5_e3sih"]
@@ -189,5 +189,37 @@ autoplay = &"move_platform"
 [node name="falling_platform" parent="platforms" unique_id=559898849 instance=ExtResource("12_go7sj")]
 position = Vector2(847, -25)
 
-[node name="platform_sand" parent="." unique_id=1285034625 instance=ExtResource("8_15mv3")]
+[node name="platform_sand7" parent="platforms" unique_id=1285034625 instance=ExtResource("8_15mv3")]
 position = Vector2(851, -243)
+
+[node name="labels" type="Node" parent="." unique_id=2119698521]
+
+[node name="Label" type="Label" parent="labels" unique_id=1869096476]
+offset_left = 21.0
+offset_top = -15.0
+offset_right = 177.0
+offset_bottom = 11.0
+text = "Press Space to jump"
+
+[node name="Label2" type="Label" parent="labels" unique_id=661406651]
+offset_left = 342.0
+offset_top = -117.0
+offset_right = 498.0
+offset_bottom = -68.0
+text = "Press left mouse button to attack"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="labels" unique_id=666179703]
+offset_left = 515.0
+offset_top = -213.0
+offset_right = 703.0
+offset_bottom = -164.0
+text = "Press space in the air to double jump"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="labels" unique_id=1804704119]
+offset_left = 675.0
+offset_top = -309.0
+offset_right = 874.0
+offset_bottom = -286.0
+text = "Press shift button to dash"
